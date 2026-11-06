@@ -1,0 +1,483 @@
+/* responsive.css: Saint Cecilia home page below the 1440 artboard.
+   Loaded last. 1440 and up is the verified XD layout: every rule that changes it sits in a max-width query below 1440.
+   Tiers (approved 2026-11-05):
+     1280-1439  same layout, the side gutter shrinks to 40px (the 1160 container stays until the gutter hits 40)
+     1024-1239  fluid: the 1160 container narrows, columns become percentages
+      768-1023  tablet: sections stack to one or two columns
+         <=767  mobile: one column, swipe rows for ministries and the seasons carousel
+   Header: the 6-item nav tightens below 1360 and turns into a menu button + drawer below 1280 (responsive.js). */
+
+/* new elements: hidden at desktop */
+.burger { display: none; }
+.identity__media { display: contents; }
+
+/* ======================================================= 1439 and down: shrinking gutter */
+@media (max-width: 1439px) {
+  :root { --gut: 40px; }
+  .wrap { width: min(var(--wrap), calc(100% - 2 * var(--gut))); }
+  /* the Mass card keeps its 59px from the window's right edge (XD: 1381 of 1440) */
+  .next-mass { left: auto; right: calc(59px - (100vw - min(1160px, 100vw - 2 * var(--gut))) / 2); }
+}
+
+/* ======================================================= header: tighter nav, then the menu button */
+@media (max-width: 1359px) {
+  .nav { gap: 9px; }
+  .nav svg { margin-left: 6px; }
+}
+@media (max-width: 1279px) {
+  .nav, .site-header__hours, .site-header__rule { display: none; }
+  .js .mega { display: none; }
+  .site-header { height: 110px; }
+  .site-header__actions, .js .site-header__actions { top: 30px; right: 81px; width: auto; gap: 26px; }
+  .js .site-header.is-solid .site-header__actions { top: 22.5px; }
+  .burger {
+    position: absolute;
+    top: 26.5px;
+    right: 17px;
+    z-index: 3;
+    display: grid;
+    align-content: center;
+    gap: 7px;
+    width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    color: #fff;
+  }
+  .burger span { display: block; height: 1.5px; background: currentColor; transition: width .3s; }
+  .burger span:last-child { width: 15px; margin-left: auto; }
+  .burger:hover span:last-child { width: 100%; }
+  .burger:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .js .site-header.is-solid .burger { top: 19px; color: var(--ink); }
+  .js .burger { transition: top .5s var(--ease-out), color .3s var(--ease); }
+}
+
+/* ======================================================= 1239 and down: fluid columns */
+@media (max-width: 1239px) {
+  .h-section { font-size: 60px; line-height: 70px; }
+
+  /* hero: smaller title so its last line clears the Mass card tag */
+  .hero__title { font-size: 84px; line-height: 90px; margin-top: -18px; }
+  .hero__title small { font-size: 27px; }
+
+  /* quick links: four equal cells, arrow moves to the top right corner (it would hit the title) */
+  .quick li { flex: 1 1 0; width: auto; min-width: 0; }
+  .quick__go { left: auto; right: 22px; top: 25px; }
+
+  /* identity: text column + photo pair in a grid, photos scale with the column */
+  .identity { height: auto; padding-bottom: 58px; }
+  /* XD: text column 527 wide, photo pair from x 572 to 1196 (36px past the container) */
+  .identity .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 50.7%; grid-template-rows: auto auto auto auto 1fr; column-gap: 3.9%; align-items: start; }
+  .identity .wrap > :not(.identity__media) { grid-column: 1; }
+  .identity h2, .identity__text { width: auto; }
+  .identity .more { justify-self: start; }
+  .identity__media { display: block; position: relative; grid-column: 2; grid-row: 1 / -1; margin: 119px 0 0; padding-bottom: 11.9%; }
+  .identity__altar { position: relative; top: auto; left: auto; display: block; width: 80.6%; height: auto; aspect-ratio: 474 / 539; }
+  /* the white mat hangs outside the box, so the photo itself lines up with the column edge */
+  .identity__history { top: auto; left: auto; right: -2.72%; bottom: 0; width: 55.8%; height: auto; padding: 2.72%; }
+  .identity__history img { width: 100%; height: auto; aspect-ratio: 296 / 238; }
+
+  /* seasons: the card row moves into the flow under the heading */
+  .seasons { height: auto; padding-bottom: 49px; }
+  .seasons h2 { width: auto; flex: 1; min-width: 0; }
+  .seasons__aside { width: 36%; flex: none; margin-left: 5%; }
+  .seasons__track { position: relative; top: auto; margin-top: 52px; }
+
+  /* mass times: photo and schedule share the row, the tab list scrolls if it runs out of room */
+  .mass { height: auto; padding-bottom: 146px; }
+  .mass__intro { flex: 1; min-width: 0; margin-left: 4.9%; }
+  .mass__intro h2 { width: auto; }
+  .mass__intro p { width: auto; max-width: 520px; }
+  .mass__photo { width: 36.8%; height: auto; aspect-ratio: 427 / 532; border-radius: 999px 999px 0 0; }
+  .mass__note { left: 20px; right: 20px; top: auto; bottom: 19px; width: auto; height: auto; padding: 14px 20px 15px; }
+  .mass__note p { width: auto; }
+  .mass__schedule { flex: 1; min-width: 0; margin-left: 5.4%; }
+  .tabs { overflow-x: auto; scrollbar-width: none; padding-bottom: 16px; margin-bottom: -2px;
+          background: linear-gradient(rgba(0, 0, 0, .0727), rgba(0, 0, 0, .0727)) 0 100% / 100% 2px no-repeat; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs::after { display: none; }
+  .tabs__bar { bottom: 0; }
+  .tabs button:nth-child(n) { width: auto; margin-right: 34px; }
+
+  /* ministries: four equal cards */
+  .ministries { height: auto; padding-bottom: 87px; }
+  .ministries__intro { flex: 1; min-width: 0; margin-left: 5.2%; }
+  .ministries__intro h2 { width: auto; max-width: calc(100% - 210px); }
+  .ministries__intro p { width: auto; max-width: 520px; }
+  .ministry { width: calc((100% - 48px) / 4); }
+  .ministry img { width: 100%; height: auto; aspect-ratio: 278 / 359; }
+
+  /* this season: the same two rows, in percentages */
+  .season { height: auto; padding-bottom: 131px; }
+  .formation { width: 38.8%; height: auto; min-height: 463px; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px 32px 30px; }
+  .formation > img { width: 100%; transform: none; object-fit: cover; }
+  .formation h3, .formation .body15 { width: auto; }
+  .formation .more { align-self: flex-start; }
+  .pastor { flex: 1; width: auto; height: auto; margin: 132px 0 0 6%; padding: 32px 32px 34px; }
+  .pastor h3, .pastor blockquote { width: auto; }
+  .reading { width: 34%; height: auto; margin: 70px 0 0; padding: 40px 32px 32px; }
+  .reading blockquote { width: auto; }
+  .pantry { flex: 1; width: auto; margin-left: 5.2%; }
+  .pantry img { width: 100%; height: auto; aspect-ratio: 632 / 428; }
+  .pantry h3 { width: auto; max-width: 474px; }
+
+  /* remote hub */
+  .hub { height: auto; padding-bottom: 140px; }
+  .hub__photo, .hub__shade { height: 100%; }
+  .hub h2 { width: auto; }
+  .hub__intro { width: auto; max-width: 520px; }
+
+  /* giving: the buttons move under their text (no room beside it) */
+  .giving { height: auto; padding-bottom: 82px; }
+  .giving__lead { width: 40.9%; flex: none; }
+  .giving h2 { font-size: 48px; line-height: 56px; }
+  .giving__lead p { width: auto; max-width: 392px; }
+  .giving__photo { width: 100%; max-width: 376px; height: auto; aspect-ratio: 376 / 213; }
+  .giving__photo img { width: 100%; height: auto; transform: translateY(-12.23%); }
+  .giving__ways { flex: 1; width: auto; margin: 115px 0 0 4.7%; }
+  .way p { width: auto; max-width: 420px; }
+  .way .btn, .js .way .btn { position: relative; top: auto; right: auto; display: flex; margin-top: 22px; }
+  .way:nth-child(n) .btn { top: auto; }
+
+  /* footer: logo and address centered */
+  .site-footer { height: auto; padding-bottom: 78px; }
+  .site-footer__logo { margin: 0 auto; }
+  .site-footer blockquote { text-wrap: balance; }
+  .site-footer address { justify-content: center; margin-left: 0; }
+  .footer-nav ul { gap: 32px; }
+  .footer-nav li:nth-child(n) a { width: auto; }
+}
+
+/* ======================================================= 1023 and down: tablet */
+@media (max-width: 1023px) {
+  :root { --gut: 32px; --sp: 64px; }
+  .h-section { font-size: 50px; line-height: 58px; }
+
+  /* top bar: one centered row */
+  .topbar { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 var(--gut); font-size: 13px; }
+  .topbar p { white-space: nowrap; }
+  .topbar__badge, .topbar__link { position: static; flex: none; }
+
+  /* hero: content in the flow, the Mass card closes the hero */
+  .hero { height: auto; }
+  .hero .wrap { padding-top: 220px; }
+  .hero__title { width: auto; max-width: 640px; font-size: 72px; line-height: 78px; margin-top: -14px; }
+  .hero__title small { font-size: 24px; }
+  .hero__intro { width: auto; max-width: 474px; }
+  .next-mass { position: relative; top: auto; right: auto; left: auto; width: min(100%, 520px); height: auto; margin-top: 108px; padding-bottom: 22px; }
+
+  /* quick links: 2 x 2 */
+  .quick { height: auto; }
+  .quick ul { display: grid; grid-template-columns: 1fr 1fr; }
+  .quick li, .quick li + li { width: auto; height: auto; margin: 0; padding: 0 24px 28px; }
+  .quick li:nth-child(even) { margin-left: -1px; }
+  .quick li:nth-child(-n+2) { border-bottom: 1px solid var(--hairline); }
+
+  /* identity: text, then the photo pair */
+  .identity { padding-bottom: var(--sp); }
+  .identity .eyebrow { margin-top: var(--sp); }
+  .identity .wrap { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .identity__media { grid-column: 1; grid-row: auto; width: min(100%, 620px); margin: 56px 0 0; }
+
+  /* seasons: heading over the text and arrows */
+  .seasons { padding-bottom: var(--sp); }
+  .seasons__head { flex-direction: column; }
+  .seasons h2 { margin-top: var(--sp); }
+  .seasons__aside { width: auto; max-width: 520px; margin: 24px 0 0; }
+  .seasons__track { margin-top: 40px; }
+  .life-card { width: min(474px, 62vw); height: auto; aspect-ratio: 474 / 390; }
+  .life-card:first-child img { width: 100%; transform: none; object-fit: cover; }
+  .life-card h3 { top: auto; bottom: 22px; left: 20px; right: 20px; width: auto; font-size: 28px; line-height: 33px; }
+  /* motion off (?static, no JS): the carousel script doesn't run, so the row scrolls natively */
+  html:not(.js) .seasons__track { overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut); scroll-padding-inline: var(--gut); scrollbar-width: none; }
+  html:not(.js) .life-card { scroll-snap-align: start; }
+
+  /* mass times: heading stacks, schedule rows wrap */
+  .mass { padding-bottom: var(--sp); }
+  .mass__head { flex-direction: column; }
+  .mass__head .eyebrow { margin-top: var(--sp); }
+  .mass__intro { margin: 22px 0 0; }
+  .mass__body { align-items: stretch; }
+  .mass__photo { width: 40%; height: auto; align-self: flex-start; }
+  .mass__schedule { margin: 0 0 0 32px; }
+  .service__time { width: 112px; font-size: 26px; line-height: 32px; }
+  .service__name { font-size: 24px; line-height: 30px; white-space: normal; }
+  .service__desc { white-space: normal; }
+
+  /* ministries: swipe row */
+  .ministries { padding-bottom: var(--sp); }
+  .ministries__head { flex-direction: column; }
+  .ministries__head .eyebrow { margin-top: var(--sp); }
+  .ministries__intro { margin: 22px 0 0; }
+  .ministries__intro h2 { max-width: none; }
+  .ministries__all, .js .ministries__all { position: relative; top: auto; right: auto; margin-top: 28px; }
+  .ministries__cards {
+    gap: 16px;
+    margin: 44px calc(-1 * var(--gut)) 0;
+    padding: 0 var(--gut) 6px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gut);
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .ministries__cards::-webkit-scrollbar { display: none; }
+  .ministry { width: 300px; scroll-snap-align: start; }
+  .ministry:nth-child(even) { margin-top: 0; }
+  .ministry:nth-child(n) h3 { margin-top: 22px; }
+
+  /* this season: two columns per row */
+  .season { padding-bottom: var(--sp); }
+  .season h2 { width: auto; margin-top: var(--sp); }
+  .season__row { gap: 24px; align-items: stretch; }
+  .season__row--1 { margin-top: 48px; }
+  .season__row--2 { margin-top: 24px; align-items: flex-start; }
+  .formation { width: auto; flex: 1 1 0; min-height: 440px; }
+  .pastor { flex: 1 1 0; margin: 0; }
+  .pastor blockquote { font-size: 22px; line-height: 28px; }
+  .pastor .more { margin-top: 32px; }
+  .reading { width: auto; flex: 1 1 0; margin: 0; }
+  .reading blockquote { font-size: 28px; line-height: 34px; }
+  .pantry { flex: 1 1 0; margin: 0; }
+  .pantry h3 { font-size: 28px; line-height: 34px; }
+
+  /* remote hub */
+  .hub { padding-bottom: var(--sp); }
+  .hub .wrap { padding-top: var(--sp); }
+  .hub__shade { right: 0; background: linear-gradient(to left, rgba(0, 0, 0, .3), #000); }
+  .hub__actions { flex-wrap: wrap; gap: 12px 16px; }
+  .hub__actions .btn--outline { margin-left: 0; }
+
+  /* giving: lead over the list */
+  .giving { padding-bottom: var(--sp); }
+  .giving .wrap { flex-direction: column; }
+  .giving__lead { width: auto; }
+  .giving h2 { margin-top: var(--sp); font-size: 44px; line-height: 52px; max-width: 560px; }
+  .giving__photo { max-width: 560px; }
+  .giving__ways { width: 100%; margin: 48px 0 0; }
+
+  /* footer */
+  .site-footer { padding-bottom: 56px; }
+  .site-footer .wrap { padding-top: 56px; }
+  .site-footer blockquote { font-size: 36px; line-height: 50px; text-wrap: balance; }
+  .footer-nav ul { flex-wrap: wrap; gap: 12px 32px; }
+}
+
+/* ======================================================= 767 and down: mobile */
+@media (max-width: 767px) {
+  :root { --gut: 20px; --sp: 52px; --tb: 52px; }
+  .h-section { font-size: clamp(34px, 10vw, 42px); line-height: 1.12; }
+  .body16, .body15 { font-size: 15px; }
+
+  /* top bar: two short lines, the badge drops out */
+  .topbar { display: block; height: var(--tb); padding: 8px var(--gut) 0; font-size: 12px; line-height: 18px; }
+  .topbar__badge { display: none; }
+  .topbar p { display: inline; white-space: normal; }
+  .topbar__link { display: inline-flex; margin-left: 4px; vertical-align: top; }
+
+  /* header: smaller logo, Give + menu button */
+  .site-header { top: var(--tb); height: 92px; }
+  .site-header__logo, .site-header__logo img { width: 140px; height: 63.2px; }
+  .watch-live { display: none; }
+  .site-header__actions, .js .site-header__actions { top: 19.5px; right: 73px; }
+  .burger { top: 16px; right: 12px; }
+  .js .site-header.is-solid { height: 64px; }
+  .js .site-header.is-solid .site-header__actions { top: 13.5px; }
+  .js .site-header.is-solid .burger { top: 10px; }
+
+  /* hero */
+  .hero .wrap { padding-top: calc(var(--tb) + 128px); }
+  .hero__title { font-size: clamp(40px, 12.4vw, 56px); line-height: 1.07; margin-top: -8px; }
+  .hero__title small { font-size: 21px; }
+  .hero__intro { margin-top: 20px; }
+  .hero__actions { flex-wrap: wrap; gap: 12px; }
+  .hero__actions .btn--white, .hero__actions .btn--outline { flex: 1 0 auto; width: auto; margin: 0; padding-inline: 18px; }
+  .hero__actions .more { flex-basis: 100%; margin: 6px 0 0; }
+  .next-mass { width: 100%; padding-inline: 20px; margin-top: 88px; }
+  .next-mass__title { white-space: normal; }
+  .next-mass__row { gap: 14px; }
+  .next-mass__row dt { white-space: normal; }
+
+  /* quick links: tighter 2 x 2 */
+  .quick li, .quick li + li { padding: 0 16px 22px; }
+  .quick__arch { margin-top: 20px; }
+  .quick__title, .quick__title[style] { margin-top: 14px !important; font-size: 21px; line-height: 25px; white-space: normal; }
+  .quick__arch[style] { margin-top: 20px !important; }
+  .quick__sub { margin-top: 6px; font-size: 12px; line-height: 17px; white-space: normal; }
+  .quick__go { right: 14px; top: 20px; width: 26px; height: 26px; }
+
+  /* identity */
+  .identity__text { margin-top: 20px; }
+  .identity .more { margin-top: 28px; }
+  .identity__media { margin-top: 44px; }
+
+  /* seasons: wider cards, the next one peeks in */
+  .seasons__aside { margin-top: 18px; }
+  .seasons__arrows { margin-top: 20px; }
+  .life-card { width: 80vw; aspect-ratio: 4 / 4.4; }
+  .life-card h3 { font-size: 25px; line-height: 30px; bottom: 18px; left: 16px; right: 16px; }
+  .seasons__track { gap: 12px; margin-top: 32px; }
+
+  /* mass times: photo over the schedule */
+  .mass__intro p { margin-top: 18px; }
+  .mass__body { flex-direction: column; margin-top: 36px; }
+  .mass__photo { width: 100%; aspect-ratio: 1 / 1.05; }
+  .mass__photo img { object-position: 50% 70%; }
+  .mass__note { left: 14px; right: 14px; bottom: 14px; }
+  .mass__schedule { width: 100%; margin: 32px 0 0; }
+  .tabs { padding-left: 0; }
+  .tabs button:nth-child(n) { margin-right: 26px; }
+  .service, .service + .service, .service:first-child { padding: 20px 0 18px; }
+  .service__time { width: 104px; font-size: 21px; line-height: 27px; }
+  .service__name { font-size: 21px; line-height: 27px; }
+  .service__desc { margin-top: 6px; font-size: 14px; line-height: 21px; }
+
+  /* ministries */
+  .ministries__intro p { margin-top: 18px; }
+  .ministries__cards { margin-top: 36px; gap: 12px; }
+  .ministry { width: 76vw; }
+  .ministry h3 { font-size: 24px; line-height: 28px; }
+
+  /* this season: one column */
+  .season h2 { max-width: 330px; }
+  .season__row { flex-direction: column; gap: 20px; }
+  .season__row--1 { margin-top: 36px; }
+  .season__row--2 { margin-top: 20px; }
+  .formation { flex: none; min-height: 420px; padding: 28px 24px 26px; }
+  .formation h3 { font-size: 23px; line-height: 27px; }
+  .pastor { flex: none; padding: 28px 24px 30px; }
+  .pastor h3 { margin-top: 18px; }
+  .pastor blockquote { font-size: 21px; line-height: 27px; }
+  .reading { flex: none; padding: 32px 24px 30px; }
+  .reading blockquote { font-size: 26px; line-height: 32px; }
+  .reading .more { white-space: normal; }
+  .pantry { flex: none; margin-top: 16px; }
+  .pantry__label { margin-top: 20px; }
+  .pantry h3 { font-size: 26px; line-height: 31px; }
+
+  /* remote hub: darker overlay, text sits over the whole photo */
+  .hub__shade { background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .85)); }
+  .hub__stat strong { font-size: 44px; line-height: 52px; }
+  .hub__stat span { margin-top: 15px; }
+  .hub__actions .btn, .hub__actions .btn--outline { width: 100%; }
+
+  /* giving */
+  .giving h2 { font-size: 34px; line-height: 40px; }
+  .giving__lead p { margin-top: 18px; }
+  .giving__ways { margin-top: 40px; }
+  .way, .way:first-child { padding: 24px 0 26px; }
+  .way h3 { font-size: 26px; line-height: 31px; white-space: normal; }
+  .way p { margin-top: 12px; }
+  .way .btn { margin-top: 18px; }
+
+  /* footer: stacked address, two-column link list */
+  .site-footer blockquote { margin-top: 20px; font-size: 28px; line-height: 38px; }
+  .site-footer address { flex-direction: column; align-items: center; gap: 4px; margin-top: 24px; text-align: center; }
+  .site-footer address i { display: none; }
+  .site-footer address span:nth-child(n) { width: auto; margin: 0; }
+  .footer-nav { margin-top: 32px; padding: 20px 0; }
+  .footer-nav ul { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; text-align: center; }
+  .site-footer small { margin-top: 24px; font-size: 13px; }
+}
+
+/* ======================================================= touch screens: no hover, so show the quick-link arrows */
+@media (hover: none) {
+  .js .quick__go { opacity: 1; translate: 0 0; }
+  /* a tap leaves :hover stuck on touch screens: keep the resting look */
+  .seasons__arrows button:hover { background: rgba(167, 150, 155, .1333); color: #000; }
+  .js .seasons__arrows button:hover svg { translate: 0 0; }
+  .js .btn:hover, .js .give:hover { translate: 0 0; box-shadow: none; }
+}
+
+/* ======================================================= menu drawer (built by responsive.js) */
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(420px, 100%);
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0 28px 28px;
+  border: 0;
+  background: #fff;
+  color: var(--ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.drawer[open] { display: flex; flex-direction: column; }
+.drawer::backdrop { background: rgba(28, 20, 23, .72); backdrop-filter: blur(4px); }
+.drawer__top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
+.drawer__logo img { width: 140px; height: 63.2px; }
+.drawer__close { display: grid; place-items: center; width: 44px; height: 44px; margin: 12px -10px 0 0; }
+.drawer__close svg { width: 16px; height: 16px; }
+.drawer__close:hover { background: rgba(28, 20, 23, .06); }
+.drawer :focus-visible { outline: 2px solid var(--olive); outline-offset: 2px; }
+.drawer details { border-bottom: 1px solid rgba(28, 20, 23, .12); }
+.drawer summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 17px 0;
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: var(--track);
+  color: var(--olive-dk);
+  list-style: none;
+  cursor: pointer;
+}
+.drawer summary::-webkit-details-marker { display: none; }
+.drawer summary svg { width: 12px; height: 6px; flex: none; color: var(--wine); transition: rotate .35s; }
+.drawer details[open] summary svg { rotate: 180deg; }
+.drawer details[open] summary { color: var(--wine); }
+.drawer__links { padding: 0 0 18px; }
+.drawer__links a { display: block; padding: 8px 0; font-size: 16px; line-height: 24px; }
+.drawer__links a:hover { color: var(--wine); }
+.drawer__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+.drawer__actions .btn { width: 100%; padding-inline: 12px; }
+.drawer__info { margin-top: auto; padding-top: 32px; font-style: italic; font-size: 13px; line-height: 20px; opacity: .7; }
+
+.js .drawer[open] { animation: drawer-in .5s var(--ease-out) both; }
+.js .drawer[open]::backdrop { animation: fade-in .4s var(--ease) both; }
+.js .drawer.is-closing { animation: drawer-out .28s var(--ease-io) both; }
+.js .drawer.is-closing::backdrop { animation: fade-out .28s var(--ease-io) both; }
+@keyframes drawer-in { from { translate: 100% 0; } }
+@keyframes drawer-out { to { translate: 100% 0; } }
+.js .drawer[open] .drawer__nav > *, .js .drawer[open] .drawer__actions { animation: mega-in .6s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 45ms + 140ms); }
+/* accordions open smoothly where the browser supports it */
+.js .drawer { interpolate-size: allow-keywords; }
+.js .drawer details::details-content { block-size: 0; overflow: clip; transition: block-size .4s var(--ease-out), content-visibility .4s allow-discrete; }
+.js .drawer details[open]::details-content { block-size: auto; }
+
+/* ======================================================= dialogs on small screens */
+@media (max-width: 1023px) {
+  .live-modal__actions { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+}
+@media (max-width: 767px) {
+  /* bottom sheet */
+  .modal, .join-modal { width: 100%; max-height: calc(100dvh - 16px); margin: auto 0 0; }
+  .modal__bar { height: 64px; gap: 12px; padding: 0 8px 0 20px; }
+  .modal__title { font-size: 21px; line-height: 26px; white-space: normal; }
+  .live-modal__tag { display: none; }
+  .modal__body, .join-modal .modal__body { padding: 20px 20px 28px; }
+  .live-modal__center { padding: 0 20px; }
+  .live-modal__play { width: 56px; height: 56px; border-radius: 28px 28px 0 0; }
+  .live-modal__play svg { width: 16px; height: 18px; }
+  .live-modal__now { margin-top: 14px; font-size: 21px; line-height: 26px; }
+  .live-modal__sub, .live-modal__meta { display: none; }
+  .live-modal__live { top: 12px; left: 14px; }
+  .live-modal__actions { grid-template-columns: 1fr; gap: 10px; margin-top: 20px; }
+  .live-modal__coffee { flex-wrap: wrap; gap: 16px; margin-top: 20px; padding: 20px; }
+  .live-modal__coffee-text { flex: 1 1 200px; }
+  .live-modal__coffee .btn { width: 100%; }
+  .join-form__row, .join-form__row--address { grid-template-columns: 1fr; }
+  .join-form__row--address { grid-template-columns: 1fr 1fr; }
+  .join-form__row--address > :first-child { grid-column: 1 / -1; }
+  .choices--2 { grid-template-columns: 1fr; }
+  .join-form__foot { flex-direction: column; align-items: stretch; gap: 18px; }
+  .join-form__privacy { max-width: none; }
+  .join-form__actions { flex-direction: column-reverse; }
+  .join-form__actions .btn { width: 100%; }
+  .join-done h3 { font-size: 28px; line-height: 34px; }
+}

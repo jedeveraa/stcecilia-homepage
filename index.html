@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saint Cecilia Catholic Church</title>
+<meta name="description" content="Saint Cecilia Parish. Mass times, sacraments, ministries and parish life.">
+<link rel="preload" href="fonts/SabonRoman.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="modal.css">
+<!-- xd-motion: everything below is the motion layer. Static layout = styles.css only. -->
+<link rel="stylesheet" href="motion-core.css">
+<link rel="stylesheet" href="animations.css">
+<!-- responsive: everything below 1440 (1440 and up = the XD layout, untouched) -->
+<link rel="stylesheet" href="responsive.css">
+<script>
+  /* Motion is on by default. Playwright (the XD diff) and ?static get the plain static layout.
+     ?motion forces motion on, even under Playwright (used by motion_smoke.mjs). */
+  (function () {
+    var q = location.search;
+    if (/[?&]motion\b/.test(q) || (!navigator.webdriver && !/[?&]static\b/.test(q))) document.documentElement.classList.add('js');
+  })();
+</script>
+<script src="motion-core.js" defer></script>
+<script src="main.js" defer></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+<symbol id="i-chev" viewBox="0 0 8.407 4.203" overflow="visible">
+<path d="M 11.157 6.5 L 6.953 10.703 L 2.75 6.5" transform="matrix(1 0 0 1 -2.75 -6.5)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-arrow-ur-s" viewBox="0 0 12.669 12.669" overflow="visible">
+<path d="M 64 70.334 L 70.334 64" transform="matrix(1 0 0 1 -60.833 -60.833)" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+<path d="M 88 64 L 93.147 64 L 93.147 69.147" transform="matrix(1 0 0 1 -83.645 -60.833)" fill="none" stroke="currentColor" stroke-width="1"/>
+</symbol>
+<symbol id="i-arrow-ur" viewBox="0 0 17.27 17.27" overflow="visible">
+<path d="M 64 72.635 L 72.635 64" transform="matrix(1 0 0 1 -59.682 -59.682)" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+<path d="M 88 64 L 95.016 64 L 95.016 71.016" transform="matrix(1 0 0 1 -82.063 -59.682)" fill="none" stroke="currentColor" stroke-width="1"/>
+</symbol>
+<symbol id="i-arrow-r1" viewBox="0 0 23.9 19.554" overflow="visible">
+<path d="M 63.9 128 L 40 128" transform="matrix(1 0 0 1 -40 -118.223)" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+<path d="M 153.777 56 L 144 65.777 L 153.777 75.554" transform="matrix(1 0 0 1 -144 -56)" fill="none" stroke="currentColor" stroke-width="1"/>
+</symbol>
+<symbol id="i-arrow-r2" viewBox="0 0 23.9 19.554" overflow="visible">
+<path d="M 40 128 L 63.9 128" transform="matrix(1 0 0 1 -40 -118.223)" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+<path d="M 144 56 L 153.777 65.777 L 144 75.554" transform="matrix(1 0 0 1 -129.878 -56)" fill="none" stroke="currentColor" stroke-width="1"/>
+</symbol>
+<symbol id="i-arrow-big" viewBox="0 0 33.289 33.289" overflow="visible">
+<path d="M 40 128 L 62.886 128" transform="matrix(1 0 0 1 -34.799 -111.356)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 144 56 L 153.362 65.362 L 144 74.725" transform="matrix(1 0 0 1 -125.275 -48.718)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-coffee" viewBox="0 0 14.5 14.5" overflow="visible">
+<path d="M 8.75 0.75 C 8.728 1.381 8.584 2.133 8.078 2.75 C 7.731 3.174 7.442 3.254 7.109 3.672 C 6.987 3.825 6.87 4.01 6.771 4.236" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 11.5 2.75 C 11.485 3.129 11.389 3.58 11.052 3.95 C 10.925 4.09 10.81 4.167 10.695 4.25" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.75 6.75 L 14.25 6.75 L 14.25 10.25 C 14.25 13.01 12.01 15.25 9.25 15.25 L 8.75 15.25 C 5.99 15.25 3.75 13.01 3.75 10.25 L 3.75 6.75 L 3.75 6.75 Z" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="12.5" y1="0" x2="0" y2="0" transform="matrix(1 0 0 1 0 14.5)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 14.25 6.75 L 15.25 6.75 C 16.355 6.75 17.25 7.641 17.25 8.75 C 17.25 9.859 16.355 10.75 15.25 10.75 L 14.25 10.75" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-bulletin" viewBox="0 0 20 20" overflow="visible">
+<path d="M 4 22 L 20 22 C 21.105 22 22 21.105 22 20 L 22 4 C 22 2.895 21.105 2 20 2 L 8 2 C 6.895 2 6 2.895 6 4 L 6 20 C 6 21.105 5.105 22 4 22 Z M 4 22 C 2.895 22 2 21.105 2 20 L 2 11 C 2 9.9 2.9 9 4 9 L 6 9" transform="matrix(1 0 0 1 -2 -2)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 18 14 L 10 14" transform="matrix(1 0 0 1 -2 -2)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 15 18 L 10 18" transform="matrix(1 0 0 1 -2 -2)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 10 6 L 18 6 L 18 10 L 10 10 L 10 6 Z" transform="matrix(1 0 0 1 -2 -2)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-join" viewBox="0 0 20 18" overflow="visible">
+<path d="M 16 21 L 16 19 C 16 16.791 14.209 15 12 15 L 6 15 C 3.791 15 2 16.791 2 19 L 2 21" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="4" cy="4" r="4" transform="matrix(1 0 0 1 3 0)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="0" y1="0" x2="0" y2="6" transform="matrix(1 0 0 1 17 5)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="6" y1="0" x2="0" y2="0" transform="matrix(1 0 0 1 14 8)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-faith" viewBox="0 0 20 18" overflow="visible">
+<path d="M 12 7 L 12 21" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 16 12 L 18 12" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 16 8 L 18 8" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3 18 C 2.448 18 2 17.552 2 17 L 2 4 C 2 3.448 2.448 3 3 3 L 8 3 C 10.209 3 12 4.791 12 7 C 12 4.791 13.791 3 16 3 L 21 3 C 21.552 3 22 3.448 22 4 L 22 17 C 22 17.552 21.552 18 21 18 L 15 18 C 13.343 18 12 19.343 12 21 C 12 19.343 10.657 18 9 18 L 3 18 Z" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 6 12 L 8 12" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 6 8 L 8 8" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-giving" viewBox="0 0 20.027 18.241" overflow="visible">
+<path d="M 11 14 L 13 14 C 14.105 14 15 13.105 15 12 C 15 10.895 14.105 10 13 10 L 10 10 C 9.4 10 8.9 10.2 8.6 10.6 L 3 16" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 7 20 L 8.6 18.6 C 8.9 18.2 9.4 18 10 18 L 14 18 C 15.1 18 16.1 17.6 16.8 16.8 L 21.4 12.4 C 22.204 11.641 22.239 10.374 21.48 9.57 C 20.721 8.766 19.454 8.731 18.65 9.49 L 14.45 13.39" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 2 15 L 8 21" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 19.5 8.5 C 20.2 7.8 21 6.9 21 5.8 C 21.144 4.542 20.404 3.35 19.212 2.921 C 18.021 2.492 16.691 2.939 16 4 C 15.267 3.024 13.984 2.64 12.835 3.054 C 11.687 3.467 10.943 4.581 11 5.8 C 11 7 11.8 7.8 12.5 8.6 L 16 12 L 19.5 8.5 Z" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-close" viewBox="0 0 16 16" overflow="visible"><path d="M1 1 L15 15 M15 1 L1 15" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></symbol>
+<symbol id="i-play" viewBox="0 0 20 22" overflow="visible"><path d="M1 1.5 L19 11 L1 20.5 Z" fill="currentColor"/></symbol>
+</svg>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <img class="hero__photo" data-parallax="0.3" src="images/hero-sanctuary.jpg" alt="" width="1448" height="1086">
+  <div class="hero__shade"></div>
+
+  <div class="topbar">
+    <span class="topbar__badge">Advent Season</span>
+    <p>Join us for the Parish Advent Retreat on Dec 12th. Registration is now open!</p>
+    <a class="topbar__link more more--sm" href="#">Register Now<svg aria-hidden="true" style="margin-left:3.88px"><use href="#i-arrow-ur-s"/></svg></a>
+  </div>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="./"><img src="images/logo-tab.svg" alt="Saint Cecilia Parish" width="210" height="94.8"></a>
+    <p class="site-header__hours">Office Hours: Mon–Fri 9am–4pm</p>
+    <div class="site-header__rule"></div>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="#" class="nav__trigger" data-panel="mega-mass" aria-haspopup="true" aria-expanded="false" aria-controls="mega-mass">Mass &amp; Worships</a><svg aria-hidden="true"><use href="#i-chev"/></svg></li>
+        <li><a href="#" class="nav__trigger" data-panel="mega-bulletin" aria-haspopup="true" aria-expanded="false" aria-controls="mega-bulletin">Bulletin</a><svg aria-hidden="true"><use href="#i-chev"/></svg></li>
+        <li><a href="#" class="nav__trigger" data-panel="mega-new" aria-haspopup="true" aria-expanded="false" aria-controls="mega-new">Newcomers</a><svg aria-hidden="true"><use href="#i-chev"/></svg></li>
+        <li><a href="#" class="nav__trigger" data-panel="mega-sac" aria-haspopup="true" aria-expanded="false" aria-controls="mega-sac">Sacraments &amp; Life Events</a><svg aria-hidden="true"><use href="#i-chev"/></svg></li>
+        <li><a href="#" class="nav__trigger" data-panel="mega-comm" aria-haspopup="true" aria-expanded="false" aria-controls="mega-comm">Community Life</a><svg aria-hidden="true"><use href="#i-chev"/></svg></li>
+        <li><a href="#" class="nav__trigger" data-panel="mega-about" aria-haspopup="true" aria-expanded="false" aria-controls="mega-about">About the parish</a><svg aria-hidden="true"><use href="#i-chev"/></svg></li>
+      </ul>
+    </nav>
+    <div class="site-header__actions">
+      <a class="watch-live" href="#" data-modal="live">Watch Live</a>
+      <a class="give" href="#">Give</a>
+    </div>
+    <!-- menu button: shows below 1280px, opens the drawer (built by responsive.js from the mega menu links) -->
+    <button class="burger" type="button" aria-label="Open menu" aria-haspopup="dialog" aria-controls="drawer" aria-expanded="false"><span></span><span></span></button>
+    <!-- Mega menu (motion layer only: hidden in the static build). Pattern ported from stcecilia-homepage-b.
+         Link lists for Mass, Sacraments, Community and About come from option B. Bulletin and Newcomers are PLACEHOLDER. -->
+    <div class="mega" id="mega">
+      <div class="wrap">
+        <div class="mega__panel" id="mega-mass">
+          <a class="mega__feature" href="#"><img src="images/mass-altar.jpg" alt="Mass at the high altar" width="1707" height="2560" loading="lazy"><p class="serif">Sunday Solemn Mass streams live every Sunday at 10:00 AM.</p></a>
+          <div class="mega__links">
+            <p class="mega__label">Mass &amp; Worships</p>
+            <a href="#"><small>01</small>Mass Schedule &amp; Info<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>02</small>Reconciliation<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#" data-modal="live"><small>03</small>Live Stream &amp; Remote Hub<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>04</small>Liturgical Music &amp; Choirs<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+          </div>
+        </div>
+        <!-- PLACEHOLDER: Bulletin panel content -->
+        <div class="mega__panel" id="mega-bulletin">
+          <a class="mega__feature" href="#"><img src="images/giving-nave.jpg" alt="The nave during Mass" width="1448" height="1086" loading="lazy"><p class="serif">This week’s bulletin, plus the 12-month archive.</p></a>
+          <div class="mega__links">
+            <p class="mega__label">Bulletin</p>
+            <a href="#"><small>01</small>Current Bulletin<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>02</small>12-Month Archive<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>03</small>Pastor’s Weekly Note<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>04</small>Submit an Announcement<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+          </div>
+        </div>
+        <!-- PLACEHOLDER: Newcomers panel content -->
+        <div class="mega__panel" id="mega-new">
+          <a class="mega__feature" href="#"><img src="images/ministry-safe-environment.jpg" alt="Parish volunteers welcoming visitors" width="1100" height="698" loading="lazy"><p class="serif">New here? You are welcome at every Mass.</p></a>
+          <div class="mega__links">
+            <p class="mega__label">Newcomers</p>
+            <a href="#" data-modal="join"><small>01</small>Join Saint Cecilia<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>02</small>Your First Visit<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>03</small>Becoming Catholic (OCIA)<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>04</small>Virtual Coffee Hour<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+          </div>
+        </div>
+        <div class="mega__panel" id="mega-sac">
+          <a class="mega__feature" href="#"><img src="images/season-communion.jpg" alt="First Communion procession" width="1044" height="1507" loading="lazy"><p class="serif">Enrollment for 2026–2027 Faith Formation is open.</p></a>
+          <div class="mega__links">
+            <p class="mega__label">Sacraments &amp; Life Events</p>
+            <a href="#"><small>01</small>Infant &amp; Youth Sacraments<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>02</small>Adult Sacraments (OCIA)<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>03</small>Faith Formation Registration<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>04</small>Weddings, Funerals &amp; Baptisms<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+          </div>
+        </div>
+        <div class="mega__panel" id="mega-comm">
+          <a class="mega__feature" href="#"><img src="images/food-pantry.jpg" alt="Volunteers serving at the community meal" width="1448" height="1086" loading="lazy"><p class="serif">Share your gifts, serve others, and deepen your faith journey.</p></a>
+          <div class="mega__links">
+            <p class="mega__label">Community Life</p>
+            <a href="#"><small>01</small>Parish Ministries Directory<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>02</small>Outreach &amp; Social Justice<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>03</small>Pastoral Care &amp; Anointing<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>04</small>Volunteer &amp; Safe Environment<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+          </div>
+        </div>
+        <div class="mega__panel" id="mega-about">
+          <a class="mega__feature" href="#"><img src="images/history-church.jpg" alt="Historic photo of Saint Cecilia Church" width="1206" height="968" loading="lazy"><p class="serif">123 Parish Lane, Rougemont, NC. Office open Mon–Fri, 9am–4pm.</p></a>
+          <div class="mega__links">
+            <p class="mega__label">About the parish</p>
+            <a href="#" data-modal="join"><small>01</small>Join the Parish<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>02</small>What We Stand For &amp; History<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>03</small>Clergy &amp; Staff Directory<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+            <a href="#"><small>04</small>Contact &amp; Campus Map<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <p class="eyebrow eyebrow--light eyebrow--crisp" data-load style="--w:199px;--d:1">Welcoming All to Christ’s Table</p>
+    <h1 class="hero__title" data-split="load"><small>Welcome to</small> <br>Saint Cecilia Catholic Church</h1>
+    <p class="hero__intro" data-load style="--d:4">Rooted in Catholic tradition and dedicated to living the Gospel, we invite you to pray, serve, and grow with our parish family.</p>
+    <div class="hero__actions" data-load style="--d:5">
+      <a class="btn btn--white" href="#" data-modal="live"><span class="live-dot"></span>Watch Mass Live</a>
+      <a class="btn btn--outline btn--light" href="#">Mass Times</a>
+      <a class="more" href="#">I’m New<svg aria-hidden="true" style="margin-left:3.86px"><use href="#i-arrow-ur"/></svg></a>
+    </div>
+
+    <aside class="next-mass" data-load style="--d:6" aria-label="Upcoming Mass and worship">
+      <p class="next-mass__tag">Next Mass Tomorrow</p>
+      <h2 class="next-mass__title serif">Upcoming Mass &amp; Worship</h2>
+      <p class="next-mass__next"><b>Next: </b>Weekday Morning Mass, 8:30 AM</p>
+      <dl>
+        <div class="next-mass__row">
+          <dt>Saturday Vigil Mass<span>In-Person &amp; Reconciliation prior</span></dt>
+          <dd>5:00 PM</dd>
+        </div>
+        <div class="next-mass__row">
+          <dt>Sunday Mass Services<span>10:00 AM broadcasted live online</span></dt>
+          <dd>8 · 10 AM<span>&amp; 5:00 PM</span></dd>
+        </div>
+        <div class="next-mass__row">
+          <dt>Sacrament of Reconciliation<span>Saturday afternoons</span></dt>
+          <dd>3:30 – 4:30 PM</dd>
+        </div>
+      </dl>
+      <a class="more more--sm" href="#">View Full Seasonal Schedule<svg aria-hidden="true"><use href="#i-arrow-ur-s"/></svg></a>
+    </aside>
+  </div>
+</section>
+
+<main>
+<!-- ============ QUICK LINKS ============ -->
+<section class="quick" aria-label="Quick links">
+  <div class="wrap">
+    <ul>
+      <li data-reveal style="--px:30px">
+        <div class="quick__arch"><svg style="left:18px;top:20px;width:20px;height:20px" aria-hidden="true"><use href="#i-bulletin"/></svg></div>
+        <h2 class="quick__title serif"><a href="#">Weekly Bulletin</a></h2>
+        <p class="quick__sub">Current issue &amp; 12-mo archive</p>
+        <svg class="quick__go" aria-hidden="true"><use href="#i-arrow-big"/></svg>
+      </li>
+      <li data-reveal style="--px:22.03px">
+        <div class="quick__arch"><svg style="left:19px;top:23px;width:20px;height:18px" aria-hidden="true"><use href="#i-join"/></svg></div>
+        <h2 class="quick__title serif"><a href="#" data-modal="join">Join Saint Cecilia</a></h2>
+        <p class="quick__sub">Online registration for newcomers</p>
+        <svg class="quick__go quick__go--more" aria-hidden="true"><use href="#i-arrow-big"/></svg>
+      </li>
+      <li data-reveal style="--px:26px">
+        <div class="quick__arch" style="margin-top:26px"><svg style="left:18px;top:22px;width:20px;height:18px" aria-hidden="true"><use href="#i-faith"/></svg></div>
+        <h2 class="quick__title serif" style="margin-top:18px"><a href="#">Faith Information</a></h2>
+        <p class="quick__sub">Youth &amp; sacrament prep</p>
+        <svg class="quick__go quick__go--more" aria-hidden="true"><use href="#i-arrow-big"/></svg>
+      </li>
+      <li data-reveal style="--px:22px">
+        <div class="quick__arch"><svg style="left:17.99px;top:21.88px;width:20.027px;height:18.241px" aria-hidden="true"><use href="#i-giving"/></svg></div>
+        <h2 class="quick__title serif"><a href="#">Online Giving</a></h2>
+        <p class="quick__sub">Support Parish Stewardship</p>
+        <svg class="quick__go quick__go--more" aria-hidden="true"><use href="#i-arrow-big"/></svg>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ IDENTITY ============ -->
+<section class="identity">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal style="--w:145px">Our Identity &amp; Mission</p>
+    <h2 class="h-section" data-split>Rooted in Tradition, Opened Wide to the World</h2>
+    <p class="identity__text" data-reveal>For over a century in Boston's Back Bay, Saint Cecilia Parish has been a beacon of Catholic faith, intellectual engagement, and compassionate outreach. As a parish of the Archdiocese of Boston, we strive to be a sacrament of Christ’s loving presence.</p>
+    <a class="more" data-reveal href="#">What We Stand For &amp; History<svg aria-hidden="true" style="margin-left:3.9px"><use href="#i-arrow-ur"/></svg></a>
+    <div class="identity__media"><!-- display: contents at 1440, a box below it -->
+    <img class="identity__altar" data-reveal="clip" src="images/altar-last-supper.jpg" alt="The altar beneath the Last Supper painting" width="1440" height="1083">
+    <figure class="identity__history" data-reveal="clip"><img src="images/history-church.jpg" alt="Historic photo of Saint Cecilia Church" width="1206" height="968"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEASONS OF LIFE ============ -->
+<section class="seasons">
+  <div class="wrap">
+    <div class="seasons__head">
+      <h2 class="h-section" data-split>Every season of life,<br>celebrated here.</h2>
+      <div class="seasons__aside">
+        <p data-reveal>At Saint Cecilia, faith is expressed in authentic community, active social justice, and inclusive fellowship for every season of life.</p>
+        <div class="seasons__arrows" data-reveal>
+          <button type="button" aria-label="Previous"><svg aria-hidden="true"><use href="#i-arrow-r1"/></svg></button>
+          <button type="button" aria-label="Next"><svg aria-hidden="true"><use href="#i-arrow-r2"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="seasons__track">
+      <article class="life-card" data-reveal="clip"><img src="images/season-baptism.jpg" alt="" width="1577" height="997"><h3 class="serif">Baptism</h3></article>
+      <article class="life-card" data-reveal="clip"><img src="images/season-communion.jpg" alt="" width="1044" height="1507"><h3 class="serif">First Communion &amp; Confirmation</h3></article>
+      <article class="life-card" data-reveal="clip"><img src="images/season-wedding.jpg" alt="" width="1254" height="1254"><h3 class="serif">Weddings</h3></article>
+    </div>
+    <!-- PLACEHOLDER: extra carousel cards (not in the XD). main.js adds them when motion runs. Photos reused from this page. -->
+    <template id="season-more">
+      <article class="life-card"><img src="images/altar-last-supper.jpg" alt="" width="1440" height="1083"><h3 class="serif">Funerals &amp; Memorials</h3></article>
+      <article class="life-card"><img src="images/mass-altar.jpg" alt="" width="1707" height="2560"><h3 class="serif">Becoming Catholic (OCIA)</h3></article>
+    </template>
+  </div>
+</section>
+
+<!-- ============ MASS TIMES ============ -->
+<section class="mass">
+  <div class="wrap">
+    <div class="mass__head">
+      <p class="eyebrow" data-reveal style="--w:200px">Welcoming All to Christ’s Table</p>
+      <div class="mass__intro">
+        <h2 class="h-section" data-split>Mass &amp; reconciliation times</h2>
+        <p data-reveal>Accurate service hours for our Back Bay parish. Come join our community for prayer and the holy celebration of the Eucharist.</p>
+      </div>
+    </div>
+    <div class="mass__body">
+      <figure class="mass__photo" data-reveal="clip">
+        <img src="images/mass-altar.jpg" alt="Mass at the high altar" width="1707" height="2560">
+        <figcaption class="mass__note"><p>Prefer a private confession? Call the parish office to book a time with the pastor.</p></figcaption>
+      </figure>
+      <div class="mass__schedule">
+        <div class="tabs" role="tablist" aria-label="Service times" data-reveal>
+          <button type="button" role="tab" aria-selected="true">Weekend Mass</button>
+          <button type="button" role="tab" aria-selected="false">Weekday Mass</button>
+          <button type="button" role="tab" aria-selected="false">Reconciliation</button>
+          <button type="button" role="tab" aria-selected="false">Eucharistic Adoration</button>
+          <span class="tabs__bar"></span>
+        </div>
+        <ol class="services" role="tabpanel">
+          <li class="service" data-reveal><p class="service__time serif">5:00 PM</p><div><h3 class="service__name serif">Saturday Vigil Mass</h3><p class="service__desc">English Mass fulfilling the Sunday obligation.</p></div></li>
+          <li class="service" data-reveal><p class="service__time serif">8:00 AM</p><div><h3 class="service__name serif">Sunday Early Mass</h3><p class="service__desc">Quiet Mass with organ prelude.</p></div></li>
+          <li class="service" data-reveal><p class="service__time serif">10:00 AM</p><div><h3 class="service__name serif">Sunday Solemn Mass</h3><p class="service__desc">Full parish choir, with live broadcast.</p></div></li>
+          <li class="service" data-reveal><p class="service__time serif">5:00 PM</p><div><h3 class="service__name serif">Sunday Youth &amp; Evening Mass</h3><p class="service__desc">Contemporary liturgical music ensemble.</p></div></li>
+        </ol>
+        <!-- Rows for the other tabs (motion layer swaps them in). Weekday 8:30 AM and Saturday 3:30 PM come from the hero card;
+             every other row is a PLACEHOLDER until the parish confirms its schedule. -->
+        <template data-tab="1">
+          <li class="service"><p class="service__time serif">8:30 AM</p><div><h3 class="service__name serif">Weekday Morning Mass</h3><p class="service__desc">Monday to Friday in the main church.</p></div></li>
+          <li class="service"><p class="service__time serif">12:10 PM</p><div><h3 class="service__name serif">Midday Mass</h3><p class="service__desc">Wednesdays, in the Lady Chapel.</p></div></li>
+          <li class="service"><p class="service__time serif">7:00 PM</p><div><h3 class="service__name serif">First Friday Mass</h3><p class="service__desc">Followed by a holy hour.</p></div></li>
+        </template>
+        <template data-tab="2">
+          <li class="service"><p class="service__time serif">3:30 PM</p><div><h3 class="service__name serif">Saturday Confessions</h3><p class="service__desc">Until 4:30 PM, in the confessionals by the side altar.</p></div></li>
+          <li class="service"><p class="service__time serif">7:30 PM</p><div><h3 class="service__name serif">Communal Penance Service</h3><p class="service__desc">During Advent and Lent, with several priests.</p></div></li>
+          <li class="service"><p class="service__time serif">Any day</p><div><h3 class="service__name serif">Private Confession</h3><p class="service__desc">Call the parish office to book a time with the pastor.</p></div></li>
+        </template>
+        <template data-tab="3">
+          <li class="service"><p class="service__time serif">9:00 AM</p><div><h3 class="service__name serif">First Friday Adoration</h3><p class="service__desc">Until Benediction at 5:00 PM.</p></div></li>
+          <li class="service"><p class="service__time serif">6:00 PM</p><div><h3 class="service__name serif">Thursday Holy Hour</h3><p class="service__desc">Quiet prayer before the Blessed Sacrament.</p></div></li>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MINISTRIES ============ -->
+<section class="ministries">
+  <div class="wrap">
+    <div class="ministries__head">
+      <p class="eyebrow" data-reveal style="--w:120px">Active Community</p>
+      <div class="ministries__intro">
+        <h2 class="h-section" data-split>Parish Ministries &amp; Life</h2>
+        <p data-reveal>At Saint Cecilia, faith is expressed in authentic community, active social justice, and inclusive fellowship for every season of life.</p>
+      </div>
+    </div>
+    <a data-reveal class="btn btn--gold ministries__all" href="#">See All Ministries</a>
+    <div class="ministries__cards">
+      <article class="ministry">
+        <div class="ministry__photo" data-reveal="clip"><img src="images/ministry-music.jpg" alt="" width="1100" height="733"></div>
+        <h3 class="serif" data-reveal>Liturgical Music</h3>
+        <p class="body15" data-reveal>Adult choir, youth musicians, cantors and the sacred concert series.</p>
+        <a class="more" data-reveal href="#">Contact the music office<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+      <article class="ministry">
+        <div class="ministry__photo" data-reveal="clip"><img src="images/ministry-outreach.jpg" alt="" width="1000" height="1505"></div>
+        <h3 class="serif" data-reveal>Outreach &amp; Mercy</h3>
+        <p class="body15" data-reveal>Saint Vincent de Paul, soup kitchen, and Catholic Social Teaching initiatives.</p>
+        <a class="more" data-reveal href="#">Get Involved &amp; Serve<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+      <article class="ministry">
+        <div class="ministry__photo" data-reveal="clip"><img src="images/ministry-safe-environment.jpg" alt="" width="1100" height="698"></div>
+        <h3 class="serif" data-reveal>Safe Environment</h3>
+        <p class="body15" data-reveal>Mandatory volunteer screening, background checks, and child protection guidelines.</p>
+        <a class="more" data-reveal href="#">Volunteer Requirements<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+      <article class="ministry">
+        <div class="ministry__photo" data-reveal="clip"><img src="images/ministry-far-flung.jpg" alt="" width="1000" height="664"></div>
+        <h3 class="serif" data-reveal>Far-Flung Flock</h3>
+        <p class="body15" data-reveal>Connecting remote parishioners, homebound members, and virtual small groups.</p>
+        <a class="more" data-reveal href="#">Connect Online<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THIS SEASON ============ -->
+<section class="season">
+  <div class="wrap">
+    <h2 class="h-section" data-split>This season at Saint Cecilia</h2>
+    <div class="season__row season__row--1">
+      <article class="formation" data-reveal="clip">
+        <img src="images/faith-formation.jpg" alt="" width="2560" height="1701">
+        <p class="formation__label">Youth ministry</p>
+        <h3 class="serif">2026-2027 Children’s Faith Formation</h3>
+        <p class="body15">Enrollment is open for First Communion, Confirmation and Sunday School classes.</p>
+        <a class="more more--light" href="#">Register Online<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+      <article class="pastor" data-reveal>
+        <p class="pastor__label">Pastor's weekly note</p>
+        <h3 class="serif">Reflecting on the Advent liturgy</h3>
+        <blockquote class="serif">“As we enter this holy season, let us prepare our hearts for the joy of Christ’s coming through prayer and fellowship.”</blockquote>
+        <a class="more more--light" href="#">Read in this week’s bulletin<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+    </div>
+    <div class="season__row season__row--2">
+      <article class="reading" data-reveal>
+        <p class="eyebrow eyebrow--light" style="--w:102px">Today’s reading</p>
+        <blockquote class="serif">“The Lord is my shepherd; I shall not want.”</blockquote>
+        <a class="more more--light" href="#">Read the full readings at USCCB.org<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+      <article class="pantry">
+        <div class="pantry__photo" data-reveal="clip"><img src="images/food-pantry.jpg" alt="" width="1448" height="1086"></div>
+        <p class="pantry__label" data-reveal>Community outreach</p>
+        <h3 class="serif" data-reveal>Food Pantry Holiday Drive</h3>
+        <p class="body15" data-reveal>Our Saint Vincent de Paul outreach is collecting non-perishable food and holiday supplies for local families.</p>
+        <a class="more" data-reveal href="#">See needed items<svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REMOTE HUB ============ -->
+<section class="hub">
+  <img class="hub__photo" data-parallax="0.03" src="images/hub-broadcast.jpg" alt="" width="1448" height="1086">
+  <div class="hub__shade"></div>
+  <div class="wrap">
+    <p class="eyebrow eyebrow--light" data-reveal style="--w:191px">Worldwide Parish Community</p>
+    <h2 class="h-section" data-split>Remote Congregation Hub</h2>
+    <p class="hub__intro" data-reveal>Unable to attend in person? Participate in Mass, download the Sunday Worship Aid, and stay connected with our parish.</p>
+    <p class="hub__stat" data-reveal><strong data-count="10000" data-format="comma" data-prefix="~">~10,000</strong><span>weekly views from around the world</span></p>
+    <div class="hub__actions" data-reveal>
+      <a class="btn btn--gold" href="#" data-modal="live"><span class="live-dot live-dot--light"></span>Open Live Stream Hub</a>
+      <a class="btn btn--outline btn--light" href="#"><svg aria-hidden="true"><use href="#i-coffee"/></svg>Join Virtual Coffee Hour</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GIVING ============ -->
+<section class="giving">
+  <div class="wrap">
+    <div class="giving__lead">
+      <h2 class="serif" data-split>Your gift keeps the doors open on Belvidere Street.</h2>
+      <p data-reveal>Your generosity sustains our liturgical worship, faith formation programs, parish maintenance, and charitable outreach in the community.</p>
+      <figure class="giving__photo" data-reveal="clip"><img src="images/giving-nave.jpg" alt="The nave of Saint Cecilia during Mass" width="1448" height="1086"></figure>
+    </div>
+    <div class="giving__ways">
+      <div class="way" data-reveal>
+        <h3 class="serif">One-Time Offertory</h3>
+        <p>Quick, secure online contribution for Sunday offertory or special collections.</p>
+        <a class="btn btn--gold" href="#">Give One-Time</a>
+      </div>
+      <div class="way" data-reveal>
+        <h3 class="serif">iGive Recurring Giving</h3>
+        <p>Set up convenient weekly or monthly automated bank draft / credit card giving.</p>
+        <a class="btn btn--cream" href="#">Set Up Recurring</a>
+      </div>
+      <div class="way" data-reveal>
+        <h3 class="serif">Estate Planning</h3>
+        <p>Remember Saint Cecilia Church in your will or legacy estate planning.</p>
+        <a class="btn btn--outline" href="#">Contact Business Manager</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <img class="site-footer__logo" data-reveal src="images/logo-footer.svg" alt="Saint Cecilia Parish" width="214" height="67">
+    <blockquote class="serif" data-split>“Come pray, serve, and grow with us, in every season.”</blockquote>
+    <address data-reveal><span>123 Parish Lane</span><i></i><span>Rougemont, NC 27572</span><i></i><span>(555) 019-2831</span></address>
+    <nav class="footer-nav" data-reveal aria-label="Footer">
+      <ul>
+        <li><a href="#">Mass &amp; Worships</a></li>
+        <li><a href="#">Bulletin</a></li>
+        <li><a href="#">Newcomers</a></li>
+        <li><a href="#">Sacraments &amp; Life Events</a></li>
+        <li><a href="#">Community Life</a></li>
+        <li><a href="#">About the parish</a></li>
+      </ul>
+    </nav>
+    <small data-reveal>© 2026 Saint Cecilia Parish. All rights reserved.</small>
+  </div>
+</footer>
+
+<!-- ============ LIVE STREAM MODAL (not in the XD; opened by [data-modal="live"]) ============
+     The player uses a SAMPLE YouTube stream (XdiwLbhuuDo) sent by the client; swap it for the parish stream. PLACEHOLDER: the Worship Aid / iGive / prayer / Zoom links are "#",
+     and the Coffee Hour time (4:00 PM) is from the client reference, not confirmed. -->
+<dialog class="modal live-modal" id="live-modal" data-lenis-prevent aria-labelledby="live-modal-title">
+  <div class="modal__inner">
+    <header class="modal__bar">
+      <p class="live-modal__tag"><span class="live-modal__dot" aria-hidden="true"></span>Saint Cecilia Broadcast</p>
+      <h2 class="modal__title serif" id="live-modal-title">Live &amp; Recorded Worship Hub</h2>
+      <button class="modal__close" type="button" aria-label="Close" data-close><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="modal__body">
+      <figure class="live-modal__player" data-youtube="XdiwLbhuuDo">
+        <img src="images/hub-broadcast.jpg" alt="" width="1448" height="1086" loading="lazy">
+        <p class="live-modal__live">Live every Sunday</p>
+        <div class="live-modal__center">
+          <button class="live-modal__play" type="button" aria-label="Play the Sunday Solemn Mass broadcast"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+          <figcaption>
+            <p class="live-modal__now serif">Sunday Solemn Mass, 10:00 AM</p>
+            <p class="live-modal__sub">Full parish choir, broadcast live from the nave · Archived on YouTube</p>
+          </figcaption>
+        </div>
+        <p class="live-modal__meta">1080p HD · Saint Cecilia Parish</p>
+      </figure>
+      <div class="live-modal__actions">
+        <a class="btn btn--olive" href="#"><svg aria-hidden="true"><use href="#i-faith"/></svg>Download Worship Aid (PDF)</a>
+        <a class="btn btn--gold" href="#"><svg aria-hidden="true"><use href="#i-giving"/></svg>iGive Remote Offertory</a>
+        <a class="btn btn--outline" href="#">Submit Prayer Petition<svg aria-hidden="true"><use href="#i-arrow-ur-s"/></svg></a>
+      </div>
+      <aside class="live-modal__coffee">
+        <span class="modal-arch" aria-hidden="true"><svg><use href="#i-coffee"/></svg></span>
+        <div class="live-modal__coffee-text">
+          <h3 class="serif">Sunday Virtual Coffee Hour</h3>
+          <p>Gather with our Far-Flung Flock this Sunday at <b>4:00 PM</b> for reflection and warm conversation on Zoom.</p>
+        </div>
+        <a class="btn btn--outline" href="#">Join the Zoom Room</a>
+      </aside>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ JOIN MODAL (not in the XD; opened by [data-modal="join"]) ============
+     PLACEHOLDER: the form is not sent anywhere yet. It needs a backend (Netlify Forms, the parish CRM or email)
+     before launch. Ministries list = this page's ministries + "Rainbow Ministry" from the client reference. -->
+<dialog class="modal join-modal" id="join-modal" aria-labelledby="join-modal-title" data-lenis-prevent>
+  <div class="modal__inner">
+    <header class="modal__bar">
+      <span class="modal-arch" aria-hidden="true"><svg><use href="#i-join"/></svg></span>
+      <h2 class="modal__title serif" id="join-modal-title">Join Saint Cecilia Parish</h2>
+      <button class="modal__close" type="button" aria-label="Close" data-close><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="modal__body">
+      <form class="join-form" id="join-form" novalidate>
+        <p class="join-form__intro">Welcome to our parish family! Fill in this short form and our pastoral team will reach out within a week.</p>
+        <p class="join-form__note">All fields are required unless marked optional.</p>
+        <div class="join-form__errors" role="alert" tabindex="-1" hidden></div>
+        <div class="join-form__row">
+            <div class="field">
+              <label for="jf-first">First name</label>
+              <input id="jf-first" name="first_name" autofocus type="text" autocomplete="given-name" data-msg="Enter your first name" required aria-describedby="jf-first-err">
+              <p class="field__error" id="jf-first-err"></p>
+            </div>
+            <div class="field">
+              <label for="jf-last">Last name</label>
+              <input id="jf-last" name="last_name" type="text" autocomplete="family-name" data-msg="Enter your last name" required aria-describedby="jf-last-err">
+              <p class="field__error" id="jf-last-err"></p>
+            </div>
+        </div>
+            <div class="field">
+              <label for="jf-email">Email address</label>
+              <span class="field__hint" id="jf-email-hint">We send a welcome note and the weekly bulletin here.</span>
+              <input id="jf-email" name="email" type="email" autocomplete="email" spellcheck="false" data-msg="Enter your email address" data-type-msg="Enter an email address like name@example.com" required aria-describedby="jf-email-err jf-email-hint">
+              <p class="field__error" id="jf-email-err"></p>
+            </div>
+            <div class="field">
+              <label for="jf-phone">Phone number <span class="field__opt">(optional)</span></label>
+              <input id="jf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" data-type-msg="Enter a phone number with area code, like 555 019 2831" aria-describedby="jf-phone-err">
+              <p class="field__error" id="jf-phone-err"></p>
+            </div>
+            <div class="field">
+              <label for="jf-street">Street address</label>
+              <input id="jf-street" name="street" type="text" autocomplete="address-line1" data-msg="Enter your street address" required aria-describedby="jf-street-err">
+              <p class="field__error" id="jf-street-err"></p>
+            </div>
+        <div class="join-form__row join-form__row--address">
+            <div class="field">
+              <label for="jf-city">City</label>
+              <input id="jf-city" name="city" type="text" autocomplete="address-level2" data-msg="Enter your city" required aria-describedby="jf-city-err">
+              <p class="field__error" id="jf-city-err"></p>
+            </div>
+            <div class="field">
+              <label for="jf-state">State</label>
+              <select id="jf-state" name="state" autocomplete="address-level1" required aria-describedby="jf-state-err">
+                <option>AL</option>
+                <option>AK</option>
+                <option>AZ</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>CO</option>
+                <option>CT</option>
+                <option>DE</option>
+                <option>DC</option>
+                <option>FL</option>
+                <option>GA</option>
+                <option>HI</option>
+                <option>ID</option>
+                <option>IL</option>
+                <option>IN</option>
+                <option>IA</option>
+                <option>KS</option>
+                <option>KY</option>
+                <option>LA</option>
+                <option>ME</option>
+                <option>MD</option>
+                <option>MA</option>
+                <option>MI</option>
+                <option>MN</option>
+                <option>MS</option>
+                <option>MO</option>
+                <option>MT</option>
+                <option>NE</option>
+                <option>NV</option>
+                <option>NH</option>
+                <option>NJ</option>
+                <option>NM</option>
+                <option>NY</option>
+                <option selected>NC</option>
+                <option>ND</option>
+                <option>OH</option>
+                <option>OK</option>
+                <option>OR</option>
+                <option>PA</option>
+                <option>RI</option>
+                <option>SC</option>
+                <option>SD</option>
+                <option>TN</option>
+                <option>TX</option>
+                <option>UT</option>
+                <option>VT</option>
+                <option>VA</option>
+                <option>WA</option>
+                <option>WV</option>
+                <option>WI</option>
+                <option>WY</option>
+              </select>
+              <p class="field__error" id="jf-state-err"></p>
+            </div>
+            <div class="field">
+              <label for="jf-zip">ZIP code</label>
+              <input id="jf-zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="10" pattern="\d{5}(-\d{4})?" data-msg="Enter your ZIP code" data-type-msg="Enter a 5-digit ZIP code" required aria-describedby="jf-zip-err">
+              <p class="field__error" id="jf-zip-err"></p>
+            </div>
+        </div>
+        <fieldset class="field">
+          <legend>How do you join us?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="connection" value="in-person" checked><span>In person<small>I live nearby and come to Mass at Saint Cecilia</small></span></label>
+            <label class="choice"><input type="radio" name="connection" value="online"><span>Online<small>I watch the live stream and join from a distance</small></span></label>
+            <label class="choice"><input type="radio" name="connection" value="visiting"><span>Just visiting<small>I’m new and getting to know the parish</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Ministries you’d like to hear about <span class="field__opt">(optional)</span></legend>
+          <div class="choices choices--2">
+              <label class="choice"><input type="checkbox" name="ministries" value="Liturgical Music &amp; Choirs">Liturgical Music &amp; Choirs</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Outreach &amp; Mercy">Outreach &amp; Mercy</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Children’s Faith Formation">Children’s Faith Formation</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Far-Flung Flock (online)">Far-Flung Flock (online)</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Food Pantry">Food Pantry</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Rainbow Ministry">Rainbow Ministry</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Volunteer &amp; Safe Environment">Volunteer &amp; Safe Environment</label>
+              <label class="choice"><input type="checkbox" name="ministries" value="Not sure yet">Not sure yet</label>
+          </div>
+        </fieldset>
+        <div class="join-form__foot">
+          <p class="join-form__privacy">We only use your details to welcome you to the parish. We never share them.</p>
+          <div class="join-form__actions">
+            <button class="btn btn--outline" type="button" data-close>Cancel</button>
+            <button class="btn btn--gold" type="submit">Send my registration</button>
+          </div>
+        </div>
+      </form>
+      <div class="join-done" tabindex="-1" hidden>
+        <span class="modal-arch" aria-hidden="true"><svg><use href="#i-join"/></svg></span>
+        <h3 class="serif">Welcome to the parish<span data-name></span>.</h3>
+        <p>Thank you for registering. Someone from our pastoral team will call or email you within a week.</p>
+        <button class="btn btn--gold" type="button" data-close>Close</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+<script src="responsive.js" defer></script>
+<script src="modal.js" defer></script>
+</body>
+</html>

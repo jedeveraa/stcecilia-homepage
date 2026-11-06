@@ -1,0 +1,8 @@
+<!-- bbox x=416.013 y=6590.25 w=14.5 h=14.5 -->
+<symbol id="i-coffee" viewBox="0 0 14.5 14.5" overflow="visible">
+<path d="M 8.75 0.75 C 8.728 1.381 8.584 2.133 8.078 2.75 C 7.731 3.174 7.442 3.254 7.109 3.672 C 6.987 3.825 6.87 4.01 6.771 4.236" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 11.5 2.75 C 11.485 3.129 11.389 3.58 11.052 3.95 C 10.925 4.09 10.81 4.167 10.695 4.25" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.75 6.75 L 14.25 6.75 L 14.25 10.25 C 14.25 13.01 12.01 15.25 9.25 15.25 L 8.75 15.25 C 5.99 15.25 3.75 13.01 3.75 10.25 L 3.75 6.75 L 3.75 6.75 Z" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="12.5" y1="0" x2="0" y2="0" transform="matrix(1 0 0 1 0 14.5)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 14.25 6.75 L 15.25 6.75 C 16.355 6.75 17.25 7.641 17.25 8.75 C 17.25 9.859 16.355 10.75 15.25 10.75 L 14.25 10.75" transform="matrix(1 0 0 1 -2.75 -0.75)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>

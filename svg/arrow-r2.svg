@@ -1,0 +1,5 @@
+<!-- bbox x=972.05 y=2031.223 w=23.9 h=19.554 -->
+<symbol id="i-arrow-r2" viewBox="0 0 23.9 19.554" overflow="visible">
+<path d="M 40 128 L 63.9 128" transform="matrix(1 0 0 1 -40 -118.223)" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+<path d="M 144 56 L 153.777 65.777 L 144 75.554" transform="matrix(1 0 0 1 -129.878 -56)" fill="none" stroke="currentColor" stroke-width="1"/>
+</symbol>

@@ -1,0 +1,7 @@
+<!-- bbox x=1050.987 y=946.88 w=20.027 h=18.241 -->
+<symbol id="i-giving" viewBox="0 0 20.027 18.241" overflow="visible">
+<path d="M 11 14 L 13 14 C 14.105 14 15 13.105 15 12 C 15 10.895 14.105 10 13 10 L 10 10 C 9.4 10 8.9 10.2 8.6 10.6 L 3 16" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 7 20 L 8.6 18.6 C 8.9 18.2 9.4 18 10 18 L 14 18 C 15.1 18 16.1 17.6 16.8 16.8 L 21.4 12.4 C 22.204 11.641 22.239 10.374 21.48 9.57 C 20.721 8.766 19.454 8.731 18.65 9.49 L 14.45 13.39" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 2 15 L 8 21" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 19.5 8.5 C 20.2 7.8 21 6.9 21 5.8 C 21.144 4.542 20.404 3.35 19.212 2.921 C 18.021 2.492 16.691 2.939 16 4 C 15.267 3.024 13.984 2.64 12.835 3.054 C 11.687 3.467 10.943 4.581 11 5.8 C 11 7 11.8 7.8 12.5 8.6 L 16 12 L 19.5 8.5 Z" transform="matrix(1 0 0 1 -2 -2.759)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>

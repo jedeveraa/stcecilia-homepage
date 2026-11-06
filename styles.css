@@ -1,0 +1,356 @@
+/* Saint Cecilia Parish, home page. Built from XD artboard "SCP - Home Page" (1440 x 8057).
+   All px values come from spec/layout.txt (XD baselines converted to CSS line-box tops). */
+
+@font-face { font-family: "Sabon"; src: url(fonts/SabonRoman.ttf) format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Trebuchet MS"; src: url(fonts/TrebuchetMS.ttf) format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "Trebuchet MS"; src: url(fonts/TrebuchetMS-Italic.ttf) format("truetype"); font-weight: 400; font-style: italic; font-display: block; }
+
+:root {
+  --wine: #975060;
+  --olive-dk: #374027;
+  --olive: #63714B;
+  --sage: #A6A276;
+  --mauve: #A7969B;
+  --gold: #F7B446;
+  --cream: #E7DCBA;
+  --ink: #1C1417;
+  --rule: #D9D9D9;
+  --hairline: #EDEDED;
+  --serif: "Sabon", Georgia, serif;
+  --sans: "Trebuchet MS", "Helvetica Neue", sans-serif;
+  --track: -0.055em;          /* XD -55 */
+  --wrap: 1160px;             /* 1440 artboard minus 140px margins */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+svg { overflow: visible; display: block; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; appearance: none; line-height: inherit; text-align: inherit; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { position: relative; display: flow-root; width: var(--wrap); margin: 0 auto; }
+
+/* ---------- type ---------- */
+.serif { font-family: var(--serif); font-weight: 400; letter-spacing: var(--track); }
+.h-section { font-family: var(--serif); font-weight: 400; font-size: 70px; line-height: 82px; letter-spacing: var(--track); color: var(--olive-dk); }
+.body16 { font-size: 16px; line-height: 24px; }
+.body15 { font-size: 15px; line-height: 24px; }
+.nowrap { white-space: nowrap; }
+
+/* eyebrow: label between two 1px rules. XD centers the rules on whole pixels, so they paint as 2 rows at 50%. */
+.eyebrow {
+  position: relative;
+  display: block;
+  width: var(--w);
+  height: 35px;
+  padding: 9px 0 0 1px;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--wine);
+  white-space: nowrap;
+}
+.eyebrow::before, .eyebrow::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: currentColor; opacity: .5; }
+.eyebrow::before { top: 0; }
+.eyebrow::after { top: 33px; }
+.eyebrow--light { color: #fff; }
+/* hero rules sit on .5 coordinates: one crisp row each */
+.eyebrow--crisp { height: 33px; padding: 8px 0 0 .5px; margin-left: .5px; }
+.eyebrow--crisp::before, .eyebrow--crisp::after { height: 1px; opacity: 1; }
+.eyebrow--crisp::after { top: 32px; }
+
+/* text link with up-right arrow (gap 3) */
+.more { display: inline-flex; align-items: flex-start; font-style: italic; font-size: 16px; line-height: 24px; color: var(--wine); white-space: nowrap; }
+.more svg { width: 17.27px; height: 17.27px; margin: 2.86px 0 0 3px; flex: none; }
+.more--light { color: #fff; }
+.more--sm { font-size: 12px; }
+.more--sm svg { width: 12.669px; height: 12.669px; margin-top: 5.67px; }
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 43px;
+  padding-top: 10px;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.btn--gold { background: var(--gold); }
+.btn--cream { background: var(--cream); }
+.btn--white { background: #fff; }
+.btn--outline { border: 1px solid currentColor; padding-top: 9px; }
+.btn--light { color: #fff; }
+.live-dot { position: relative; width: 13px; height: 13px; margin: 5px 9px 0 0; border-radius: 50%; background: rgba(151, 80, 96, .0753); flex: none; }
+.live-dot::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--wine); }
+.live-dot--light { background: rgba(255, 255, 255, .2589); }
+.live-dot--light::after { background: #fff; }
+
+/* ======================================================= HERO (0 to 900) */
+.hero { position: relative; height: 900px; color: #fff; overflow-x: clip; }
+.hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero__shade { position: absolute; inset: 0; background: linear-gradient(rgba(15, 12, 13, 0), #000); }
+
+.topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 3; height: 40px; padding-top: 9px; background: var(--cream); color: #000; font-size: 14px; line-height: 24px; text-align: center; }
+.topbar__badge { position: absolute; top: 9px; left: calc(50% - 352px); width: 102px; height: 22px; background: rgba(0, 0, 0, .0944); font-size: 12px; line-height: 22px; text-transform: uppercase; }
+.topbar__link { position: absolute; top: 9px; left: calc(50% + 253.17px); }
+
+.site-header { position: absolute; top: 40px; left: 0; right: 0; z-index: 2; height: 139px; background: linear-gradient(#000, rgba(0, 0, 0, 0)); }
+.site-header__logo { position: absolute; top: 0; left: 0; width: 210px; height: 94.8px; }
+.site-header__logo img { width: 210px; height: 94.8px; }
+.site-header__hours { position: absolute; top: 5px; right: 17px; font-size: 12px; line-height: 24px; white-space: nowrap; }
+.site-header__rule { position: absolute; top: 30px; left: 238px; right: 17px; height: 2px; background: #707070; opacity: .5; }
+.nav { position: absolute; top: 44.5px; left: 238px; display: flex; gap: 16px; }
+.nav li { display: flex; align-items: flex-start; }
+.nav a { display: block; white-space: nowrap; }
+.nav svg { width: 8.407px; height: 4.203px; margin: 9.4px 0 0 10px; color: #fff; }
+.site-header__actions { position: absolute; top: 38px; right: 17px; width: 196px; display: flex; align-items: flex-start; }
+.watch-live { display: flex; align-items: flex-start; padding-top: 6.5px; white-space: nowrap; }
+.watch-live::before { content: ""; width: 4px; height: 4px; margin: 9.5px 10px 0 0; border-radius: 50%; background: #fff; }
+.give { margin-left: auto; width: 83px; height: 37px; padding: 7px 0 0 1px; background: var(--gold); color: var(--ink); font-style: italic; text-align: center; }
+
+.hero .wrap { padding-top: 223px; }
+.hero__title { width: 686px; margin-top: -24px; font-family: var(--serif); font-weight: 400; font-size: 100px; line-height: 107px; letter-spacing: var(--track); }
+.hero__title small { font-size: 30px; line-height: 0; letter-spacing: var(--track); }
+.hero__intro { width: 474px; margin-top: 25.5px; }
+.hero__actions { display: flex; align-items: flex-start; margin-top: 20.5px; }
+.hero__actions .btn--white { width: 188px; }
+.hero__actions .btn--outline { width: 130px; margin-left: 15px; }
+.hero__actions .more { margin: 10px 0 0 21.87px; color: #fff; }
+.hero__actions .more svg { width: 17.13px; height: 17.13px; margin-top: 3.2px; }
+
+.next-mass { position: absolute; top: 553px; left: 866px; width: 375px; height: 347px; padding: 0 24px; background: #fff; color: var(--ink); }
+.next-mass__tag { position: absolute; bottom: 100%; left: 0; width: 196px; height: 36px; padding: 11px 0 0 33px; background: var(--gold); font-style: italic; font-size: 14px; line-height: 16px; }
+.next-mass__title { margin-top: 21px; font-size: 24px; line-height: 28px; white-space: nowrap; }
+.next-mass__next { margin-top: 7px; font-style: italic; font-size: 12px; line-height: 24px; color: var(--wine); }
+.next-mass__next b { font-weight: 400; color: var(--ink); }
+.next-mass dl { margin-top: 9px; }
+.next-mass__row { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid var(--rule); }
+.next-mass__row dt { font-family: var(--serif); font-size: 18px; line-height: 22px; letter-spacing: var(--track); white-space: nowrap; }
+.next-mass__row dt span { display: block; margin-top: -1px; font-family: var(--sans); font-style: italic; font-size: 12px; line-height: 24px; letter-spacing: 0; opacity: .6969; }
+.next-mass__row dd { text-align: right; font-family: var(--serif); font-size: 18px; line-height: 22px; letter-spacing: var(--track); margin-right: .055em; white-space: nowrap; }
+.next-mass__row dd span { display: block; margin-right: -0.99px; font-family: var(--sans); font-style: italic; font-size: 12px; line-height: 24px; letter-spacing: 0; opacity: .3822; }
+.next-mass__row:nth-child(1) dt { padding-top: 14px; }
+.next-mass__row:nth-child(1) dd { padding-top: 25px; }
+.next-mass__row:nth-child(2) { margin-top: 15px; }
+.next-mass__row:nth-child(2) dt { padding-top: 20px; }
+.next-mass__row:nth-child(2) dd { padding-top: 19px; }
+.next-mass__row:nth-child(3) { margin-top: 9px; }
+.next-mass__row:nth-child(3) dt { padding-top: 14px; }
+.next-mass__row:nth-child(3) dd { padding-top: 25px; }
+.next-mass > .more { margin-top: 3px; }
+
+/* ======================================================= QUICK LINKS (898 to 1097) */
+.quick { position: relative; z-index: 2; height: 199px; margin-top: -2px; background: #fff; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+.quick .wrap { height: 100%; }
+.quick ul { display: flex; height: 100%; }
+.quick li { position: relative; flex: none; width: 291px; height: 197px; border-left: 1px solid var(--hairline); border-right: 1px solid var(--hairline); padding-left: calc(var(--px) - 1px); }
+.quick li + li { margin-left: -1px; }
+.quick__arch { position: relative; width: 58px; height: 58px; margin-top: 25px; border: 1px solid var(--sage); border-radius: 29px 29px 0 0; color: var(--olive); }
+.quick__arch svg { position: absolute; }
+.quick__title { margin-top: 19px; font-size: 25px; line-height: 29px; color: var(--olive-dk); white-space: nowrap; }
+.quick__sub { margin-top: 7px; font-style: italic; font-size: 12px; line-height: 24px; white-space: nowrap; }
+.quick__go { position: absolute; left: 230px; top: 114.36px; width: 33.289px; height: 33.289px; color: var(--wine); }
+.quick a::after { content: ""; position: absolute; inset: 0; }
+
+/* ======================================================= IDENTITY (1097 to 1860) */
+.identity { height: 763px; }
+.identity .eyebrow { margin-top: 118px; }
+.identity h2 { width: 527px; margin-top: 17px; }
+.identity__text { width: 506px; margin-top: 25px; }
+.identity .more { margin-top: 43.5px; }
+.identity__altar { position: absolute; top: 119px; left: 572px; width: 474px; height: 539px; object-fit: cover; object-position: 45% 50%; }
+/* history print: even 16px white mat on all sides; the photo's right edge sits on the column edge (1160), not past it */
+.identity__history { position: absolute; top: 458px; left: 848px; width: 328px; height: 270px; padding: 16px; background: #fff; }
+.identity__history img { width: 296px; height: 238px; object-fit: cover; }
+
+/* ======================================================= SEASONS OF LIFE (1860 to 2560) */
+.seasons { position: relative; height: 700px; overflow: hidden; }
+.seasons__head { display: flex; align-items: flex-start; }
+.seasons h2 { width: 659px; margin-top: 45px; }
+.seasons__aside { width: 392px; margin: 62px 0 0 109px; }
+.seasons__arrows { display: flex; gap: 10px; margin-top: 25px; }
+/* <button> centers its content vertically on top of any padding, so center with grid (XD: icon at 10.05, 12.22) */
+.seasons__arrows button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; color: #000; }
+/* changed from XD on request (2026-11-05): both arrows gray, green on hover (XD had the left one gold) */
+.seasons__arrows button { background: rgba(167, 150, 155, .1333); }
+.seasons__arrows button:hover { background: var(--olive); color: #fff; }
+.seasons__arrows svg { width: 23.9px; height: 19.554px; }
+.seasons__track { position: absolute; top: 261px; left: 0; display: flex; gap: 16px; }
+.life-card { position: relative; width: 474px; height: 390px; flex: none; color: #fff; }
+.life-card { overflow: hidden; }
+.life-card img { width: 100%; height: 100%; object-fit: cover; }
+/* XD crops the baptism photo at -71.45px; keep the fraction with a transform */
+.life-card:first-child img { width: 616.9px; max-width: none; object-fit: fill; transform: translateX(-71.45px); }
+.life-card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: linear-gradient(rgba(0, 0, 0, 0), #000); }
+.life-card h3 { position: absolute; z-index: 1; top: 325px; left: 16px; width: 438px; font-size: 32px; line-height: 38px; }
+
+/* ======================================================= MASS TIMES (2560 to 3502) */
+.mass { height: 942px; }
+.mass__head { display: flex; align-items: flex-start; }
+.mass__head .eyebrow { margin-top: 96px; flex: none; }
+.mass__intro { margin: 72px 0 0 57px; }
+.mass__intro h2 { width: 903px; }
+.mass__intro p { width: 520px; margin-top: 22px; }
+.mass__body { display: flex; align-items: flex-start; margin-top: 40px; }
+.mass__photo { position: relative; width: 427px; height: 532px; flex: none; border-radius: 213.5px 213.5px 0 0; overflow: hidden; }
+.mass__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 79.89%; }
+.mass__note { position: absolute; left: 20px; top: 436px; width: 387px; height: 77px; padding: 14px 0 0 20px; background: var(--sage); color: #fff; }
+.mass__note p { width: 352px; }
+.mass__schedule { width: 670px; margin: 25px 0 0 63px; }
+.tabs { position: relative; display: flex; padding: 0 0 14px 22px; }
+.tabs::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: rgba(0, 0, 0, .0727); }
+.tabs button { flex: none; white-space: nowrap; opacity: .3982; }
+.tabs button:nth-child(1) { width: 159px; }
+.tabs button:nth-child(2) { width: 157px; }
+.tabs button:nth-child(3) { width: 158px; }
+.tabs button[aria-selected="true"] { opacity: 1; }
+.tabs__bar { position: absolute; left: 0; bottom: -2px; z-index: 1; width: 149px; height: 2px; background: var(--wine); }
+.service { position: relative; display: flex; align-items: flex-start; padding: 25px 0 22px; }
+.service::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(0, 0, 0, .0727); }
+.service + .service { padding-top: 23px; }
+.service:first-child { padding-top: 25px; }
+.service__time { width: 163px; flex: none; font-size: 34px; line-height: 40px; white-space: nowrap; }
+.service__name { margin-top: 0; font-size: 31px; line-height: 36px; white-space: nowrap; }
+.service__desc { margin-top: 10px; font-style: italic; opacity: .6969; white-space: nowrap; }
+
+/* ======================================================= MINISTRIES (3502 to 4516) */
+.ministries { height: 1014px; background: var(--cream); }
+.ministries__head { display: flex; align-items: flex-start; }
+.ministries__head .eyebrow { margin-top: 146px; flex: none; }
+.ministries__intro { margin: 117px 0 0 60px; }
+.ministries__intro h2 { width: 770px; }
+.ministries__intro p { width: 520px; margin-top: 22px; }
+.ministries__all { position: absolute; top: 178px; right: 0; width: 174px; }
+.ministries__cards { display: flex; gap: 16px; align-items: flex-start; margin-top: 68px; }
+.ministry { width: 278px; flex: none; }
+.ministry:nth-child(even) { margin-top: 54px; }
+.ministry img { width: 278px; height: 359px; object-fit: cover; }
+.ministry h3 { font-size: 26px; line-height: 30px; color: var(--olive-dk); }
+.ministry:nth-child(1) h3 { margin-top: 25px; }
+.ministry:nth-child(2) h3 { margin-top: 22px; }
+.ministry:nth-child(3) h3 { margin-top: 21px; }
+.ministry:nth-child(4) h3 { margin-top: 24px; }
+.ministry p { margin-top: 13px; }
+.ministry .more { margin-top: 14px; }
+
+/* ======================================================= THIS SEASON (4516 to 6158) */
+.season { height: 1642px; }
+.season h2 { width: 378px; margin: 66px 0 0 -2px; }
+.season__row { display: flex; align-items: flex-start; }
+.season__row--1 { margin-top: 98px; }
+.season__row--2 { margin-top: 83px; }
+
+.formation { position: relative; width: 450px; height: 463px; flex: none; padding: 267px 0 0 32px; color: #fff; }
+.formation { overflow: hidden; }
+/* XD crop -123.4px kept with a transform (object-fit would snap it) */
+.formation > img { position: absolute; z-index: 0; top: 0; left: 0; width: 696.8px; max-width: none; height: 100%; object-fit: fill; transform: translateX(-123.4px); }
+.formation::before { content: ""; position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 251px; background: linear-gradient(rgba(0, 0, 0, 0), #000); }
+.formation > * { position: relative; z-index: 2; }
+.formation__label { font-style: italic; font-size: 14px; line-height: 16px; }
+.formation h3 { width: 400px; margin: 19px 0 0; font-size: 25px; line-height: 29px; }
+.formation .body15 { width: 386px; margin: 10px 0 0; }
+.formation .more { margin: 14px 0 0; }
+.formation .more svg { width: 17.13px; height: 17.13px; margin-top: 3.2px; }
+
+.pastor { width: 548px; height: 304px; flex: none; margin: 132px 0 0 auto; padding: 32px 0 0 32px; background: var(--olive); color: #fff; }
+.pastor__label { font-style: italic; font-size: 14px; line-height: 16px; }
+.pastor h3 { width: 485px; margin: 26px 0 0; font-size: 21px; line-height: 25px; opacity: .7144; }
+.pastor blockquote { width: 485px; margin: 17px 0 0; font-size: 25px; line-height: 30px; }
+.pastor .more { margin: 50px 0 0; }
+.pastor .more svg, .reading .more svg, .pantry .more svg { width: 17.13px; height: 17.13px; margin-top: 3.2px; }
+
+.reading { width: 395px; height: 266px; flex: none; margin: 70px 0 0 0; padding: 40px 0 0 32px; background: var(--mauve); color: #fff; }
+.reading blockquote { width: 349px; margin-top: 17px; font-size: 34px; line-height: 40px; }
+.reading .more { margin-top: 30px; }
+
+.pantry { width: 632px; flex: none; margin-left: auto; }
+.pantry img { width: 632px; height: 428px; object-fit: cover; }
+.pantry__label { margin: 26px 0 0; font-style: italic; font-size: 14px; line-height: 16px; color: var(--wine); }
+.pantry h3 { width: 474px; margin-top: 17px; font-size: 33px; line-height: 39px; color: var(--olive-dk); }
+.pantry .body15 { margin-top: 19px; color: var(--olive-dk); }
+.pantry .more { margin-top: 20px; color: var(--olive-dk); }
+.pantry .more svg { color: var(--wine); }
+
+/* ======================================================= REMOTE HUB (6158 to 6788) */
+.hub { position: relative; height: 630px; color: #fff; }
+.hub__photo { position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 630px; object-fit: cover; object-position: 50% 75.08%; }
+.hub__shade { position: absolute; top: 0; left: 0; right: 0; height: 630px; background: linear-gradient(to left, rgba(0, 0, 0, 0), #000); }
+.hub .wrap { padding-top: 123px; }
+.hub h2 { width: 770px; margin: 8px 0 0; color: #fff; }
+.hub__intro { width: 520px; margin: 22px 0 0; }
+.hub__stat { display: flex; align-items: flex-start; margin: 17px 0 0; }
+.hub__stat strong { font-family: var(--serif); font-weight: 400; font-size: 53px; line-height: 62px; letter-spacing: var(--track); margin-right: .055em; white-space: nowrap; }
+.hub__stat span { width: 150px; margin: 19px 0 0 20px; font-size: 13px; line-height: 15px; }
+.hub__actions { display: flex; align-items: flex-start; margin: 21px 0 0; }
+.hub__actions .btn--gold { width: 232px; }
+.hub__actions .btn--outline { width: 251.5px; margin-left: 16.01px; }
+.hub__actions .btn--outline svg { width: 14.5px; height: 14.5px; margin: 4.25px 9px 0 0; flex: none; }
+
+/* ======================================================= GIVING (6788 to 7523) */
+.giving { height: 735px; }
+.giving .wrap { display: flex; align-items: flex-start; }
+.giving__lead { width: 474px; flex: none; }
+.giving h2 { margin-top: 90px; font-size: 56px; line-height: 66px; color: var(--olive-dk); }
+.giving__lead p { width: 392px; margin-top: 23px; }
+.giving__photo { width: 376px; height: 213px; margin-top: 22px; overflow: hidden; }
+/* XD crops this photo at -34.5px; object-fit snaps to whole px, a transform keeps the half pixel */
+.giving__photo img { width: 376px; height: 282px; transform: translateY(-34.5px); }
+.giving__ways { position: relative; width: 632px; margin: 115px 0 0 54px; padding-top: 2px; }
+.giving__ways::before, .way::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: rgba(28, 20, 23, .17105); }
+.giving__ways::before { top: 0; }
+.way { position: relative; padding: 30px 0 29px; }
+.way:first-child { padding-top: 27px; }
+.way::after { bottom: 0; }
+.way h3 { font-size: 32px; line-height: 38px; color: var(--olive-dk); white-space: nowrap; }
+.way p { width: 354px; margin-top: 17px; }
+.way .btn { position: absolute; right: 0; }
+.way:nth-child(1) .btn { top: 56px; width: 156px; }
+.way:nth-child(2) .btn { top: 58px; width: 172px; }
+/* XD box sits at y+0.5: its 1px top/bottom strokes paint as 2 rows at 50% */
+.way:nth-child(3) .btn { top: 65px; width: 236px; height: 44px; border-width: 2px 1px; border-color: rgba(28, 20, 23, .5) var(--ink); padding-top: 8.5px; }
+
+/* ======================================================= FOOTER (7523 to 8057) */
+.site-footer { height: 534px; overflow: hidden; background: var(--wine); color: #fff; }
+.site-footer .wrap { padding-top: 67.47px; }
+.site-footer__logo { width: 213.97px; height: 66.566px; margin-left: 474px; }
+.site-footer blockquote { margin-top: 18.97px; font-size: 47px; line-height: 77px; text-align: center; text-indent: var(--track); }
+.site-footer address { display: flex; align-items: flex-start; margin: 32px 0 0 361px; font-style: normal; }
+.site-footer address span { margin-top: 1px; white-space: nowrap; }
+.site-footer address i { width: 1px; height: 25px; margin: 0 15.5px; background: rgba(255, 255, 255, .3421); }
+.site-footer address span:nth-child(1) { width: 111px; }
+.site-footer address span:nth-child(3) { width: 157px; }
+.footer-nav { position: relative; margin-top: 42px; padding: 24.97px 0 25.03px; }
+.footer-nav::before, .footer-nav::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: rgba(255, 255, 255, .17105); }
+.footer-nav::before { top: 0; }
+.footer-nav::after { bottom: 0; }
+.footer-nav ul { display: flex; justify-content: center; gap: 56px; }
+.footer-nav a { display: block; white-space: nowrap; }
+.site-footer small { display: block; margin-top: 29px; font-size: 14px; line-height: 24px; text-align: center; }
+
+/* XD point-text widths (whole pixels) for the nav items, header and footer */
+.nav li:nth-child(1) a, .footer-nav li:nth-child(1) a { width: 116.96px; }
+.nav li:nth-child(2) a, .footer-nav li:nth-child(2) a { width: 56px; }
+.nav li:nth-child(3) a, .footer-nav li:nth-child(3) a { width: 82px; }
+.nav li:nth-child(4) a, .footer-nav li:nth-child(4) a { width: 182px; }
+.nav li:nth-child(5) a, .footer-nav li:nth-child(5) a { width: 113px; }
+.nav li:nth-child(6) a, .footer-nav li:nth-child(6) a { width: 119px; }
+.footer-nav li:nth-child(1) a { width: 117px; }

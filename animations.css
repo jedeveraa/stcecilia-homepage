@@ -1,0 +1,232 @@
+/* animations.css: St Cecilia motion layer, project overrides on top of motion-core.css.
+   styles.css stays the verified static layout. Everything that moves is scoped to html.js,
+   and every effect ends on the static position (the XD diff runs with motion off).
+   Character: sharp corners, Sabon serif headings, italic Trebuchet labels, up-right arrows,
+   gold / wine / olive on white and cream, arch motif. */
+
+:root { --motion-radius: 0px; }   /* sharp corners: clip reveals stay square */
+
+/* only exists with motion on */
+.mega { display: none; }
+
+/* ======================================================= HERO: load zoom, then a slow Ken Burns */
+.js .hero { overflow: clip; }   /* the parallax photo must not show below the hero */
+.js .hero__photo {
+  scale: 1.14;
+  animation:
+    m-zoom 2.6s var(--ease-out) calc(var(--load-base) - 200ms) forwards,
+    kenburns 26s ease-in-out 3s infinite alternate;
+  will-change: translate, scale;
+}
+@keyframes kenburns { from { scale: 1; } to { scale: 1.07; } }
+
+/* "Welcome to" has line-height 0 in styles.css (so it doesn't push the 100px lines). Split into inline-block
+   words, each word box was 0px tall and its rise mask cut the letters. A real line-height gives the mask
+   room; the 36px box sits inside the 107px line, so nothing moves. */
+.js .hero__title small .w { line-height: 1.2; }
+
+/* hero eyebrow rules draw in with the load */
+.js .eyebrow[data-load]::before, .js .eyebrow[data-load]::after {
+  transform-origin: 0 50%;
+  animation: rule-draw 1s var(--ease-out) calc(var(--load-base) + 250ms) both;
+}
+@keyframes rule-draw { from { scale: 0 1; } }
+
+/* other eyebrows: rules draw in as the label rises */
+.js .eyebrow::before, .js .eyebrow::after { transform-origin: 0 50%; transition: scale 1s var(--ease-out) calc(var(--rd, 0ms) + 150ms); }
+.js [data-reveal].eyebrow:not(.is-in)::before, .js [data-reveal].eyebrow:not(.is-in)::after { scale: 0 1; }
+
+/* ======================================================= HEADER: always sticky, solid after the top bar */
+.js .site-header {
+  position: fixed;
+  top: var(--hdr-top, 40px);   /* follows the top bar away, then sticks at 0 */
+  z-index: 50;
+  transition: height .5s var(--ease-out), box-shadow .4s var(--ease);
+}
+.js .site-header::before { content: ""; position: absolute; inset: 0; background: #fff; opacity: 0; transition: opacity .4s var(--ease); }
+.js .site-header.is-solid { height: 82px; box-shadow: 0 1px 0 var(--hairline), 0 18px 40px -28px rgba(28, 20, 23, .35); }
+.js .site-header.is-solid::before { opacity: 1; }
+.js .site-header__logo { z-index: 3; }
+.js .site-header__hours, .js .site-header__rule { transition: opacity .3s var(--ease); }
+.js .site-header.is-solid .site-header__hours, .js .site-header.is-solid .site-header__rule { opacity: 0; }
+.js .nav, .js .site-header__actions { transition: top .5s var(--ease-out), color .3s var(--ease); }
+.js .site-header.is-solid .nav { top: 29px; color: var(--ink); }
+.js .site-header.is-solid .site-header__actions { top: 22.5px; color: var(--ink); }
+.js .site-header.is-solid .give { color: var(--ink); }
+.js .watch-live { position: relative; }
+.js .watch-live::before { transition: background .3s; }
+.js .site-header.is-solid .watch-live::before { background: var(--wine); }
+.js .watch-live::after { content: ""; position: absolute; left: 0; top: 16px; width: 4px; height: 4px; border-radius: 50%; background: currentColor; animation: ping 2.2s var(--ease-out) infinite; }
+.js .site-header.is-solid .watch-live::after { background: var(--wine); }
+
+/* nav: underline + chevron flip (ported from homepage-b) */
+.js .nav a { position: relative; }
+.js .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; height: 1px; background: currentColor; scale: 0 1; transform-origin: 100% 50%; transition: scale .45s var(--ease-out); }
+.js .nav li:hover a::after, .js .nav li.is-open a::after { scale: 1 1; transform-origin: 0 50%; }
+.js .nav svg { transition: rotate .35s var(--ease-out), color .3s var(--ease); }
+.js .site-header.is-solid .nav svg { color: var(--ink); }
+.js .nav li.is-open svg { rotate: 180deg; }
+
+/* mega menu: drops below the bar, feature photo + numbered links */
+.js .mega {
+  display: block;
+  position: absolute;
+  top: 82px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: inset 0 1px 0 var(--hairline), 0 40px 60px -30px rgba(28, 20, 23, .35);
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition: clip-path .55s var(--ease-io), visibility 0s .55s;
+}
+.js .mega.open { clip-path: inset(0 0 -90px 0); visibility: visible; transition: clip-path .55s var(--ease-io), visibility 0s; }
+.js .mega .wrap { padding-top: 0; }   /* the mega sits inside .hero, whose .wrap has the hero padding */
+.mega__panel { display: none; grid-template-columns: 360px 1fr; gap: 80px; padding: 48px 0 52px; }
+.mega__panel.is-active { display: grid; }
+.mega__feature { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 3; color: #fff; }
+.mega__feature img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease-out); }
+.mega__feature:hover img { scale: 1.05; }
+.mega__feature p { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 20px; font-size: 21px; line-height: 26px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .72)); }
+.mega__links { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-content: start; }
+.mega__label { grid-column: 1 / -1; margin-bottom: 6px; font-style: italic; font-size: 14px; line-height: 16px; color: var(--wine); }
+.mega__links a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(28, 20, 23, .12);
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 30px;
+  letter-spacing: var(--track);
+  color: var(--olive-dk);
+  transition: color .3s var(--ease), padding-left .45s var(--ease-out);
+}
+.mega__links small { font-family: var(--sans); font-style: italic; font-size: 12px; letter-spacing: 0; color: var(--ink); opacity: .5; }
+.mega__links svg { width: 17.27px; height: 17.27px; margin-left: auto; align-self: center; flex: none; color: var(--wine); opacity: 0; translate: -8px 8px; transition: opacity .35s, translate .45s var(--ease-out); }
+.mega__links a:hover { color: var(--wine); padding-left: 8px; }
+.mega__links a:hover svg { opacity: 1; translate: 0 0; }
+.js .mega.open .mega__panel.is-active .mega__links > * { animation: mega-in .7s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 55ms + 120ms); }
+.js .mega.open .mega__panel.is-active .mega__feature { animation: mega-in .8s var(--ease-out) .08s both; }
+@keyframes mega-in { from { opacity: 0; translate: 0 14px; } }
+
+/* ======================================================= QUICK LINKS: hover reveals the arrow */
+/* XD shows one arrow (Weekly Bulletin). With motion every cell has one, hidden until hover. Static keeps the XD look. */
+.quick__go--more { display: none; }
+.js .quick__go--more { display: block; }
+.js .quick li { transition: background-color .5s var(--ease); }
+.js .quick li:hover, .js .quick li:focus-within { background-color: rgba(231, 220, 186, .28); }
+.js .quick__go { opacity: 0; translate: -14px 0; transition: opacity .35s var(--ease), translate .6s var(--ease-out); }
+.js .quick li:hover .quick__go, .js .quick li:focus-within .quick__go { opacity: 1; translate: 0 0; }
+/* the arch frame fills from the bottom (sage), icon turns white, frame lifts */
+.js .quick__arch { isolation: isolate; transition: translate .6s var(--ease-out), color .4s var(--ease); }
+.js .quick__arch::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 28px 28px 0 0; background: var(--sage); scale: 1 0; transform-origin: 50% 100%; transition: scale .55s var(--ease-io); }
+.js .quick li:hover .quick__arch, .js .quick li:focus-within .quick__arch { translate: 0 -4px; color: #fff; }
+.js .quick li:hover .quick__arch::before, .js .quick li:focus-within .quick__arch::before { scale: 1 1; }
+.js .quick__title { transition: color .35s var(--ease); }
+.js .quick li:hover .quick__title, .js .quick li:focus-within .quick__title { color: var(--wine); }
+
+/* ======================================================= BUTTONS: lift + shadow + darken (all buttons) */
+/* core .btn sets position: relative; these buttons are placed absolutely in styles.css */
+.js .ministries__all, .js .way .btn { position: absolute; }
+/* no fill motion: switch off the core rising fill */
+.js .btn::before { display: none; }
+.js .btn, .js .give {
+  transition: translate .45s var(--ease-out), box-shadow .45s var(--ease-out), background-color .35s var(--ease), scale .25s var(--ease);
+}
+.js .btn:hover, .js .give:hover { translate: 0 -3px; box-shadow: 0 12px 22px -12px rgba(28, 20, 23, .5); }
+.js .btn:active, .js .give:active { translate: 0 -1px; scale: .98; }
+/* keep each label color (core flips it to --fill-fg on hover) */
+.js .btn:hover { color: var(--ink); }
+.js .btn--light:hover { color: #fff; }
+/* darken per variant */
+.js .btn--gold:hover, .js .give:hover { background-color: #E9A02C; }
+.js .btn--white:hover { background-color: #F3EDE0; }
+.js .btn--cream:hover { background-color: #DCCDA0; }
+.js .btn--outline:hover { background-color: rgba(28, 20, 23, .05); }
+.js .btn--outline.btn--light:hover { background-color: rgba(255, 255, 255, .14); box-shadow: 0 12px 22px -12px rgba(0, 0, 0, .7); }
+
+/* live dots ping */
+.js .live-dot::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--wine); animation: ping 2.2s var(--ease-out) infinite; }
+.js .live-dot--light::before { background: #fff; }
+@keyframes ping { from { scale: 1; opacity: .8; } to { scale: 3; opacity: 0; } }
+
+/* ======================================================= ARROW LINKS: diagonal slide-through + underline */
+/* main.js adds a second <use> (.more__in) and wraps the label in .more__label */
+.js .more svg { clip-path: inset(-1px); }   /* hides the waiting arrow, keeps the stroke caps */
+.js .more use { transition: translate .55s var(--ease-io); }
+.js .more .more__in { translate: -18px 18px; }
+.js .more:hover use:not(.more__in) { translate: 18px -18px; }
+.js .more--sm .more__in { translate: -14px 14px; }
+.js .more--sm:hover use:not(.more__in) { translate: 14px -14px; }
+.js .more:hover .more__in { translate: 0 0; }
+.js .more__label { background: linear-gradient(currentColor, currentColor) 100% calc(100% - 3px) / 0 1px no-repeat; transition: background-size .55s var(--ease-out); }
+.js .more:hover .more__label { background-position: 0 calc(100% - 3px); background-size: 100% 1px; }
+
+/* ======================================================= PHOTOS: clip wipe up + settle, slow zoom on hover */
+.js [data-reveal="clip"] img { transition: scale 1.6s var(--ease-out); }
+.js [data-reveal="clip"]:not(.is-in) img { scale: 1.15; }
+.js .ministry__photo, .js .pantry__photo { overflow: hidden; }
+.js .life-card img, .js .ministry__photo img, .js .pantry__photo img, .js .formation > img, .js .giving__photo img { transition: scale 1.2s var(--ease-out); }
+.js .life-card:hover img, .js .ministry:hover .ministry__photo img, .js .pantry:hover .pantry__photo img,
+.js .formation:hover > img, .js .giving__photo:hover img { scale: 1.06; }
+.js .life-card h3 { transition: translate .6s var(--ease-out); }
+.js .life-card:hover h3 { translate: 0 -6px; }
+
+/* remote hub photo: slight parallax, with headroom */
+.js .hub { overflow: clip; }
+.js .hub__photo { scale: 1.08; will-change: translate; }   /* headroom for a ±23px parallax */
+
+/* ======================================================= MASS TIMES TABS */
+.js .tabs button { transition: opacity .3s var(--ease); }
+.js .tabs button[aria-selected="false"]:hover { opacity: .75; }
+.js .tabs__bar { transition: translate .55s var(--ease-io), width .55s var(--ease-io); }
+.js .services.is-out .service { opacity: 0; translate: 0 10px; transition: opacity .25s var(--ease), translate .25s var(--ease); }
+.js .service.is-enter { animation: svc-in .7s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 70ms); }
+@keyframes svc-in { from { opacity: 0; translate: 0 18px; } }
+
+/* ======================================================= SEASONS CAROUSEL */
+.js .seasons__track { transition: translate .9s var(--ease-io); cursor: grab; touch-action: pan-y; user-select: none; }
+.js .seasons__track.is-drag { transition: none; cursor: grabbing; }
+.js .seasons__track img { -webkit-user-drag: none; pointer-events: none; }
+.js .seasons__arrows button { transition: background .3s var(--ease), color .3s var(--ease); }
+.js .seasons__arrows svg { transition: translate .45s var(--ease-out); }
+.js .seasons__arrows button:first-child:hover svg { translate: -4px 0; }
+.js .seasons__arrows button:last-child:hover svg { translate: 4px 0; }
+.js .seasons__arrows button:active { scale: .95; }
+
+/* ======================================================= MODALS (layout in modal.css) */
+.js .modal[open] { animation: modal-in .55s var(--ease-out) both; }
+.js .modal[open]::backdrop { animation: fade-in .4s var(--ease) both; }
+.js .modal.is-closing { animation: modal-out .26s var(--ease-io) both; }
+.js .modal.is-closing::backdrop { animation: fade-out .26s var(--ease-io) both; }
+@keyframes modal-in { from { opacity: 0; translate: 0 28px; } }
+@keyframes modal-out { to { opacity: 0; translate: 0 16px; } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes fade-out { to { opacity: 0; } }
+/* body parts rise in after the box */
+.js .live-modal[open] .modal__body > * { animation: mega-in .7s var(--ease-out) both; }
+.js .live-modal[open] .modal__body > :nth-child(1) { animation-delay: .12s; }
+.js .live-modal[open] .modal__body > :nth-child(2) { animation-delay: .2s; }
+.js .live-modal[open] .modal__body > :nth-child(3) { animation-delay: .28s; }
+/* slow drift on the poster, ping on the live dot */
+.js .live-modal[open] .live-modal__player > img { animation: kenburns 20s ease-in-out infinite alternate; }
+.js .live-modal__dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--wine); animation: ping 2.2s var(--ease-out) infinite; }
+/* play button: same lift + darken as the page buttons */
+.js .live-modal__play { transition: translate .45s var(--ease-out), box-shadow .45s var(--ease-out), background-color .35s var(--ease), scale .25s var(--ease); }
+.js .live-modal__play:hover { translate: 0 -3px; background-color: #E9A02C; box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .7); }
+.js .live-modal__play:active { translate: 0 -1px; scale: .97; }
+.js .modal__close { transition: background .3s var(--ease); }
+.js .modal__close svg { transition: rotate .45s var(--ease-out); }
+.js .modal__close:hover svg { rotate: 90deg; }
+.js .btn--olive:hover { background-color: #56623F; color: #fff; }
+
+/* ======================================================= reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .js .hero__photo { scale: 1; animation: none; }
+  .js .live-dot::before, .js .watch-live::after, .js .live-modal__dot::after { display: none; }
+  .js .live-modal[open] .live-modal__player > img { animation: none; }
+}

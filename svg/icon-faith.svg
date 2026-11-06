@@ -1,0 +1,9 @@
+<!-- bbox x=765 y=948 w=20 h=18 -->
+<symbol id="i-faith" viewBox="0 0 20 18" overflow="visible">
+<path d="M 12 7 L 12 21" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 16 12 L 18 12" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 16 8 L 18 8" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3 18 C 2.448 18 2 17.552 2 17 L 2 4 C 2 3.448 2.448 3 3 3 L 8 3 C 10.209 3 12 4.791 12 7 C 12 4.791 13.791 3 16 3 L 21 3 C 21.552 3 22 3.448 22 4 L 22 17 C 22 17.552 21.552 18 21 18 L 15 18 C 13.343 18 12 19.343 12 21 C 12 19.343 10.657 18 9 18 L 3 18 Z" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 6 12 L 8 12" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 6 8 L 8 8" transform="matrix(1 0 0 1 -2 -3)" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
