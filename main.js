@@ -75,8 +75,18 @@
     const panes = [list.innerHTML.replace(/ data-reveal(="[^"]*")?/g, ''), ...[1, 2, 3].map(i => $(`template[data-tab="${i}"]`).innerHTML)];
     const textW = b => { const r = document.createRange(); r.selectNodeContents(b); return r.getBoundingClientRect().width; };
     const extra = 149 - textW(tabs[0]);   // XD bar = label + side room (149px under "Weekend Mass")
-    const place = b => { bar.style.translate = `${b.offsetLeft - tabs[0].offsetLeft}px 0`; bar.style.width = (textW(b) + extra) + 'px'; };
+    // below 1240 the tabs lose their fixed XD widths (responsive.css), so the bar sits exactly under the label:
+    // the XD side room would run into the next tab
+    const xdTabs = matchMedia('(min-width: 1240px)');
+    const place = b => {
+      const xd = xdTabs.matches;
+      bar.style.translate = `${xd ? b.offsetLeft - tabs[0].offsetLeft : b.offsetLeft}px 0`;
+      bar.style.width = (textW(b) + (xd ? extra : 0)) + 'px';
+    };
     let cur = 0, busy = false;
+    place(tabs[0]);
+    if (document.fonts) document.fonts.ready.then(() => place(tabs[cur]));
+    addEventListener('resize', () => place(tabs[cur]));
     tabs.forEach((t, k) => { t.tabIndex = k === 0 ? 0 : -1; t.setAttribute('aria-controls', 'services'); });
     list.id = 'services';
     const select = (i, focus) => {

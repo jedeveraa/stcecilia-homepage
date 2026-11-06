@@ -40,7 +40,7 @@
       <a class="btn btn--gold" href="#" data-modal="live"><span class="live-dot"></span>Watch Mass Live</a>
       <a class="btn btn--outline" href="#">Give</a>
     </div>
-    <p class="drawer__info">${hours ? esc(hours.textContent.trim()) + '<br>' : ''}${esc(address.join(' · '))}</p>`;
+    <p class="drawer__info">${hours ? esc(hours.textContent.trim()) + '<br>' : ''}${address.map(a => `<span class="nowrap">${esc(a)}</span>`).join(' · ')}</p>`;
   document.body.appendChild(drawer);
 
   /* ---------- open / close ---------- */
